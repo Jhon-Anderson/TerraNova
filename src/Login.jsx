@@ -27,7 +27,7 @@ function Login() {
         // Inicio de sesión exitoso
         setModalMessage('Inicio de sesión exitoso');
         setIsModalOpen(true);
-        setTimeout(() => navigate('/World'), 1000);
+        setTimeout(() => navigate('/Home'), 1000);
       })
       .catch((error) => {
         if (error.code) {
@@ -36,7 +36,7 @@ function Login() {
             .then((userCredential) => {
               setModalMessage('Registro e inicio de sesión exitosos');
               setIsModalOpen(true);
-              setTimeout(() => navigate('/World'), 1000);
+              setTimeout(() => navigate('/Home'), 1000);
             })
             .catch((error) => {
               // Manejo de errores de registro
