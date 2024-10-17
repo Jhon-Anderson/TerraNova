@@ -12,15 +12,15 @@ const Home = () => {
     const slides = [
         {
             title: 'INTRODUCCIÓN',
-            content: <p>Bienvenidos a Terranova. Explora nuestro contenido.</p>,
+            content:  <Recycling />,
         },
         {
-            title: 'Naturaleza',
-            content: <p>Aprende sobre la naturaleza y su importancia.</p>,
+            title: 'PROBLEMATICA',
+            content:  <Recycling />,
         },
         {
-            title: 'Sostenibilidad',
-            content: <Recycling />, // Aquí se carga el componente con el modelo 3D
+            title: 'EDUCACION',
+            content: <Recycling />,
         },
     ];
 
