@@ -95,6 +95,12 @@ html, body {
     box-sizing: border-box;
 }
 
+.canvas-recycling {
+    width: 90vw !important;
+    height: 70vh !important;
+    background-color: aqua;
+}
+
 .slider {
     display: flex;
     justify-content: center;
@@ -103,7 +109,6 @@ html, body {
     height: 100%;  /* Ajuste automático de la altura según el contenido */
     min-height: 400px;  /* Asegura que el slider tenga una altura mínima razonable */
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
