@@ -98,7 +98,8 @@ html, body {
 .canvas-recycling {
     width: 90vw !important;
     height: 70vh !important;
-    background-color: aqua;
+    background-color:#ffffff;
+    border-radius: 10px;
 }
 
 .slider {
