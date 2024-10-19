@@ -6,7 +6,7 @@ import TrashCan from './model-3d/TrashCan';
 
 const Recycling = () => {
     return (
-        <Canvas style={{ height: '300px', width: '100%' }}>
+        <Canvas style={{ height: '100%', width: '100%' }}>
             <ambientLight intensity={0.5} />
             <directionalLight position={[5, 5, 5]} />
             {/* Llama al componente TrashCan y pasa la URL del modelo */}
