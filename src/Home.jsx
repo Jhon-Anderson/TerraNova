@@ -11,14 +11,16 @@ const Home = () => {
     const slides = [
         {
             title: 'INTRODUCCIÓN',
-            content:  <Recycling />,
+            content: (
+                <div className="introduction-text">
+                    <p>
+                        La problemática del cuidado del agua es uno de los mayores desafíos globales de nuestro tiempo. El agua es un recurso esencial para la vida, la producción de alimentos, la energía y el desarrollo económico, pero está gravemente amenazada por la contaminación y el mal uso. Factores como la industrialización, la agricultura intensiva, el calentamiento global, y la deforestación han degradado la calidad del agua, afectando ecosistemas enteros y exponiendo a millones de personas a riesgos sanitarios. Esta crisis demanda soluciones urgentes que incluyan la reducción de emisiones, el tratamiento adecuado de residuos, y la conservación de los recursos hídricos para garantizar un futuro sostenible.
+                    </p>
+                </div>
+            ),
         },
         {
             title: 'PROBLEMATICA',
-            content:  <Recycling />,
-        },
-        {
-            title: 'EDUCACION',
             content: <Recycling />,
         },
     ];
@@ -36,16 +38,16 @@ const Home = () => {
             <header className="header">
                 <div className="logo">
                     <img src="/logo.svg" alt="Terranova Logo" className="logo-img" />
-                    <h2 className="logo-text">Terranova</h2>
+                    <h2 className="logo-text">TerraNova</h2>
                 </div>
                 <nav className="navbar">
                     <ul className="nav-links">
-                        <li><button onClick={() => navigate('/option1')} className="nav-button">Opción 1</button></li>
-                        <li><button onClick={() => navigate('/option2')} className="nav-button">Opción 2</button></li>
-                        <li><button onClick={() => navigate('/option3')} className="nav-button">Opción 3</button></li>
+                        <li><button onClick={() => navigate('/Contaminacion')} className="nav-button">Contaminación</button></li>
+                        <li><button onClick={() => navigate('/Escasez')} className="nav-button">Escasez</button></li>
+                        <li><button onClick={() => navigate('/Acidificacion')} className="nav-button">Acidificación</button></li>
                     </ul>
                 </nav>
-                <button onClick={() => navigate('/login')} className="logout-button">Cerrar Sesión</button>
+                <button onClick={() => navigate('/')} className="logout-button">Cerrar Sesión</button>
             </header>
 
             <main className="main-content">
@@ -62,7 +64,7 @@ const Home = () => {
             </main>
 
             <footer className="footer">
-                <p>© 2024 Terranova. Todos los derechos reservados.</p>
+                <p>© 2024 TerraNova. Todos los derechos reservados.</p>
             </footer>
         </div>
     );
