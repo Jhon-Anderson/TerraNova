@@ -1,27 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
-import Recycling from './recycling/Recycling.jsx';
+import Cartel from './cartel/Cartel.jsx';
 
 const Home = () => {
     const navigate = useNavigate();
-
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const slides = [
         {
             title: 'INTRODUCCIÓN',
-            content: (
-                <div className="introduction-text">
-                    <p>
-                        La problemática del cuidado del agua es uno de los mayores desafíos globales de nuestro tiempo. El agua es un recurso esencial para la vida, la producción de alimentos, la energía y el desarrollo económico, pero está gravemente amenazada por la contaminación y el mal uso. Factores como la industrialización, la agricultura intensiva, el calentamiento global, y la deforestación han degradado la calidad del agua, afectando ecosistemas enteros y exponiendo a millones de personas a riesgos sanitarios. Esta crisis demanda soluciones urgentes que incluyan la reducción de emisiones, el tratamiento adecuado de residuos, y la conservación de los recursos hídricos para garantizar un futuro sostenible.
-                    </p>
-                </div>
-            ),
+            content: <Cartel />,
         },
         {
             title: 'PROBLEMATICA',
-            content: <Recycling />,
+            content: <Cartel />,
         },
     ];
 
