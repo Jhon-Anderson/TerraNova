@@ -1,4 +1,3 @@
-// src/recycling/model-3d/TrashCan.jsx
 import React from 'react';
 import { useGLTF } from '@react-three/drei';
 
