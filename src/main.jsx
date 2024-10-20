@@ -6,11 +6,11 @@ import Home from './Home.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Router basename="/">
+    <Router>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/Home" element={<Home />} />
       </Routes>
     </Router>
-  </StrictMode>
+  </StrictMode>,
 );
