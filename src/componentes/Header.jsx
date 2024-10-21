@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <header className="header">
             <div className="logo" style={{ cursor: 'pointer' }} onClick={() => navigate('/home')}>
-                <img src="/logo.svg" alt="Terranova Logo" className="logo-img" />
+                <img src="/images/logo.svg" alt="Terranova Logo" className="logo-img" />
                 <h2 className="logo-text">TerraNova</h2>
             </div>
             <nav className="navbar">

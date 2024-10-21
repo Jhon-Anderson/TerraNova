@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Login from './pages/Login';
+import Login from './pages/autenticacion/Login';
 import Contaminacion from './pages/problem/contaminacion/Contaminacion';
 import Escasez from './pages/problem/escasez/Escasez';
 import Acidificacion from './pages/problem/acidificacion/Acidificacion';

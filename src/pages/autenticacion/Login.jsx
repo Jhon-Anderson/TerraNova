@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import app from '../firebaseConfig';
+import app from '../../firebaseConfig';
 import './Login.css';
 
 function Login() {
@@ -53,7 +53,7 @@ function Login() {
   return (
     <div className="login-container">
       <div className="logo-container">
-        <img src="/LogoTerraNova.png" alt="Logo TerraNova" />
+        <img src="/images/LogoTerraNova.png" alt="Logo TerraNova" />
       </div>
       <h2>Iniciar Sesión</h2>
       <form onSubmit={handleLogin}>

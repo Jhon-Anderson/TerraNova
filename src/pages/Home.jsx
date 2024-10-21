@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './Home.css';
-import Header from './Header.jsx';
-import Footer from './Footer.jsx';
+import Header from '../componentes/Header.jsx';
+import Footer from '../componentes/Footer.jsx';
 import Cartel from '../cartel/Cartel.jsx';
+import './Home.css';
 
 const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);

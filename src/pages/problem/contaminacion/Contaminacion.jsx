@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Footer from '../../Footer';
-import Header from '../../Header';
+import Footer from '../../../componentes/Footer';
+import Header from '../../../componentes/Header';
 import './Contaminacion.css';
 
 function Contaminacion() {
