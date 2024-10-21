@@ -1,3 +1,5 @@
+/* src/Home.css */
+
 .home-container {
     display: flex;
     flex-direction: column;
@@ -21,11 +23,12 @@ html, body {
 
 .header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between; /* Cambia a space-between para mejor distribución */
     align-items: center;
     padding: 10px 20px;
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
 }
 
 .logo {
@@ -35,16 +38,8 @@ html, body {
 
 .logo-img {
     width: 100px;
-    height: 50px;
+    height: auto; /* Mantiene la relación de aspecto */
     margin-right: 10px;
-}
-
-.introduction-text p {
-    text-align: justify;
-    margin: 20px;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
 }
 
 .logo-text {
@@ -110,7 +105,9 @@ html, body {
     padding: 20px;
     border-radius: 10px;
     width: 90%;
+    max-width: 800px; /* Limita el ancho en pantallas grandes */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 auto; /* Centra el slider */
 }
 
 .arrow {
@@ -145,10 +142,45 @@ html, body {
     align-items: center;
 }
 
-
 .footer {
     text-align: center;
     padding: 10px;
     background-color: #2a7f5e;
     color: white;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+        align-items: flex-start; /* Alinea a la izquierda */
+    }
+
+    .logo-img {
+        width: 80px; /* Reduce el tamaño de la imagen en pantallas pequeñas */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Alinea los enlaces verticalmente */
+        gap: 10px; /* Reduce el espacio entre botones */
+        margin-top: 10px; /* Espacio entre logo y enlaces */
+    }
+
+    .nav-button, .logout-button {
+        font-size: 14px; /* Ajusta el tamaño de fuente para dispositivos móviles */
+    }
+
+    .slider {
+        padding: 10px; /* Reduce el padding en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-button, .logout-button {
+        font-size: 12px; /* Ajusta aún más el tamaño de fuente en pantallas muy pequeñas */
+    }
+
+    .slider {
+        padding: 5px; /* Reduce el padding en pantallas muy pequeñas */
+    }
 }
