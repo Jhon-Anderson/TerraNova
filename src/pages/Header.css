@@ -10,6 +10,7 @@
 .logo {
     display: flex;
     align-items: center;
+    margin-left: 50px;
 }
 
 .logo-img {
@@ -26,6 +27,7 @@
 .navbar {
     display: flex;
     align-items: center;
+    margin-left: 20px;
 }
 
 .nav-links {

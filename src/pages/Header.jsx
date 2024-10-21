@@ -7,15 +7,15 @@ const Header = () => {
 
     return (
         <header className="header">
-            <div className="logo">
+            <div className="logo" style={{ cursor: 'pointer' }} onClick={() => navigate('/home')}>
                 <img src="/logo.svg" alt="Terranova Logo" className="logo-img" />
                 <h2 className="logo-text">TerraNova</h2>
             </div>
             <nav className="navbar">
                 <ul className="nav-links">
-                    <li><button onClick={() => navigate('/pages/problem/contaminacion/Contaminacion')} className="nav-button">Contaminación</button></li>
-                    <li><button onClick={() => navigate('/pages/problem/escasez/Escasez')} className="nav-button">Escasez</button></li>
-                    <li><button onClick={() => navigate('/pages/problem/acidificacion/Acidificacion')} className="nav-button">Acidificación</button></li>
+                    <li><button onClick={() => navigate('/contaminacion')} className="nav-button">Contaminación</button></li>
+                    <li><button onClick={() => navigate('/escasez')} className="nav-button">Escasez</button></li>
+                    <li><button onClick={() => navigate('/acidificacion')} className="nav-button">Acidificación</button></li>
                 </ul>
             </nav>
             <button onClick={() => navigate('/')} className="logout-button">Cerrar Sesión</button>
