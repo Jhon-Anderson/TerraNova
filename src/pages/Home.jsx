@@ -8,7 +8,7 @@ const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const slides = [
-        { title: 'INTRODUCCIÓN', content: <Cartel /> },
+        { title: 'El cuidado del agua es un desafío global urgente, ya que el crecimiento poblacional y la contaminación amenazan la disponibilidad de este recurso vital. Es fundamental adoptar prácticas sostenibles para garantizar el acceso a agua limpia y preservar la salud, la agricultura y el desarrollo económico.', content: <Cartel /> },
         { title: 'PROBLEMATICA', content: <Cartel /> },
     ];
 

@@ -30,6 +30,11 @@ html, body {
     box-sizing: border-box;
 }
 
+.canvas-cartel{
+    width: 100vw !important ; 
+    height: 70vh !important;
+}
+
 .slider {
     position: relative;
     background-color: rgba(255, 255, 255, 0.9);
