@@ -1,6 +1,5 @@
 body, html, #root {
   height: 100%;
-  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,9 +26,10 @@ body, html, #root {
 
 .auth-container {
   width: 400px;
-  height: 600px;
+  height: 550px;
   padding: 20px;
-  background-color: rgba(161, 231, 222, 0.8);
+  border-radius: 40px;
+  background-color: rgba(137, 207, 240, 0.9);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   box-sizing: border-box;
@@ -64,9 +64,10 @@ body, html, #root {
 }
 
 .auth-container h2 {
+  margin-top: 0px;
   margin-bottom: 20px;
   font-size: 28px;
-  color: #333;
+  color: #004c70;
   font-weight: 700;
 }
 
@@ -75,7 +76,7 @@ body, html, #root {
   margin-bottom: 8px;
   font-weight: bold;
   text-align: left;
-  color: #555;
+  color: #005f8b;
 }
 
 .auth-container input[type="email"],
@@ -83,7 +84,7 @@ body, html, #root {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #a7cbe3;
   border-radius: 40px;
   box-sizing: border-box;
   font-size: 14px;
@@ -92,14 +93,14 @@ body, html, #root {
 
 .auth-container input[type="email"]:focus,
 .auth-container input[type="password"]:focus {
-  border-color: #0072e4;
+  border-color: #017a9b;
   outline: none;
 }
 
 .auth-container button[type="submit"] {
   width: 100%;
   padding: 12px;
-  background-color: #05616fee;
+  background-color: #00a6c7;
   border: none;
   border-radius: 40px;
   color: white;
@@ -111,12 +112,11 @@ body, html, #root {
 }
 
 .auth-container button[type="submit"]:hover {
-  background-color: #004757;
+  background-color: #006f8b;
 }
 
-
 .question-section p {
-  color: #333;
+  color: #004c70;
   font-size: 14px;
 }
 
@@ -150,7 +150,7 @@ body, html, #root {
 
 .modal-content button {
   padding: 10px 20px;
-  background-color: #00ff6a;
+  background-color: #00a6c7;
   border: none;
   border-radius: 6px;
   color: white;
@@ -160,17 +160,13 @@ body, html, #root {
 }
 
 .modal-content button:hover {
-  background-color: #00b33c;
+  background-color: #006f8b;
 }
 
 @media (max-width: 600px) {
   .auth-container {
     padding: 15px;
     max-width: 300px;
-  }
-
-  .auth-container h2 {
-    font-size: 26px;
   }
 
   .auth-container input[type="email"],
