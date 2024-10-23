@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Contaminacion from './pages/problem/contaminacion/Contaminacion';
 import Escasez from './pages/problem/escasez/Escasez';
 import Acidificacion from './pages/problem/acidificacion/Acidificacion';
-import Autenticacion from './pages/autenticacion/autenticacion';
+import Autenticacion from './pages/autenticacion/Autenticacion';
 import Home from './pages/Home';
 
 createRoot(document.getElementById('root')).render(
