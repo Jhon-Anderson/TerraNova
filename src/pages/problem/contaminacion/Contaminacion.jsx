@@ -22,7 +22,7 @@ function Contaminacion() {
             </button>
             {menuOpen && (
                 <div className="sidebar">
-                    <h2>Opciones</h2>
+                    <h2>MENÚ</h2>
                     <ul>
                         <li onClick={closeMenu}>Juegos</li>
                         <li onClick={closeMenu}>Educacion</li>

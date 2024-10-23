@@ -3,8 +3,8 @@
     flex-direction: column;
     min-height: 100vh;
     width: 100vw;
-    background: linear-gradient(to bottom right, #2a7f5e, #ffffff);
-    color: #2a7f5e;
+    background: linear-gradient(to bottom right, rgba(137, 207, 240, 0.9), #ffffff);
+    color: #004c70;
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
@@ -30,8 +30,8 @@ html, body {
     box-sizing: border-box;
 }
 
-.canvas-cartel{
-    width: 100vw !important ; 
+.canvas-cartel {
+    width: 100vw !important; 
     height: 70vh !important;
 }
 
@@ -51,7 +51,7 @@ html, body {
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(255, 255, 255, 0.8);
-    color: #2a7f5e;
+    color: #005f8b;
     border: none;
     font-size: 24px;
     padding: 10px;
