@@ -1,10 +1,10 @@
 body, html, #root {
   height: 100%;
-  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Arial', sans-serif;
+  overflow: hidden;
 }
 
 .background-video {
@@ -17,27 +17,31 @@ body, html, #root {
   z-index: -1;
 }
 
-.login-wrapper {
+.auth-wrapper {
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
-.image-container {
-  width: 550px;
+.auth-container {
+  width: 400px;
   height: 550px;
-  background-color: #e0e0e0;
+  padding: 20px;
+  border-radius: 40px;
+  background-color: rgba(137, 207, 240, 0.9);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  align-items: center; 
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 .logo-container {
   display: flex;
   justify-content: center;
-  margin-bottom: -20px;
 }
 
 .logo-container img {
@@ -45,55 +49,58 @@ body, html, #root {
   height: auto;
 }
 
-.login-container {  
-  margin-right: 20px;
-  width: 100%;
-  height: 510px;
-  max-width: 350px;
-  padding: 20px;
-  background-color: rgba(161, 231, 222, 0.8);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  margin: 0px;
+.image-container {
+  width: 400px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.login-container h2 {
-  margin-bottom: 40px;
-  font-size: 32px;
-  color: #333;
+.image-container img {
+  width: 550px;
+  height: 500px;
+  object-fit: cover;
+}
+
+.auth-container h2 {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #004c70;
   font-weight: 700;
 }
 
-.login-container label {
+.auth-container label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
   text-align: left;
-  color: #555;
+  color: #005f8b;
 }
 
-.login-container input[type="email"],
-.login-container input[type="password"] {
+.auth-container input[type="email"],
+.auth-container input[type="password"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #a7cbe3;
   border-radius: 40px;
   box-sizing: border-box;
   font-size: 14px;
   transition: border-color 0.3s;
 }
 
-.login-container input[type="email"]:focus,
-.login-container input[type="password"]:focus {
-  border-color: #0072e4;
+.auth-container input[type="email"]:focus,
+.auth-container input[type="password"]:focus {
+  border-color: #017a9b;
   outline: none;
 }
 
-.login-container button[type="submit"] {
+.auth-container button[type="submit"] {
   width: 100%;
   padding: 12px;
-  background-color: #05616fee;
+  background-color: #00a6c7;
   border: none;
   border-radius: 40px;
   color: white;
@@ -104,8 +111,13 @@ body, html, #root {
   margin-top: 10px;
 }
 
-.login-container button[type="submit"]:hover {
-  background-color: #004757;
+.auth-container button[type="submit"]:hover {
+  background-color: #006f8b;
+}
+
+.question-section p {
+  color: #004c70;
+  font-size: 14px;
 }
 
 .modal-overlay {
@@ -138,7 +150,7 @@ body, html, #root {
 
 .modal-content button {
   padding: 10px 20px;
-  background-color: #00ff6a;
+  background-color: #00a6c7;
   border: none;
   border-radius: 6px;
   color: white;
@@ -148,27 +160,28 @@ body, html, #root {
 }
 
 .modal-content button:hover {
-  background-color: #00b33c;
+  background-color: #006f8b;
 }
 
 @media (max-width: 600px) {
-  .login-container {
+  .auth-container {
     padding: 15px;
     max-width: 300px;
   }
 
-  .login-container h2 {
-    font-size: 26px;
-  }
-
-  .login-container input[type="email"],
-  .login-container input[type="password"] {
+  .auth-container input[type="email"],
+  .auth-container input[type="password"] {
     padding: 8px;
     font-size: 14px;
   }
 
-  .login-container button[type="submit"] {
+  .auth-container button[type="submit"] {
     padding: 10px;
     font-size: 14px;
+  }
+
+  .image-container {
+    width: 100%;
+    height: 300px;
   }
 }

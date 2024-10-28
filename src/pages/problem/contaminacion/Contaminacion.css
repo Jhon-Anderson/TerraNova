@@ -3,8 +3,8 @@
     flex-direction: column;
     min-height: 100vh;
     width: 100vw;
-    background: linear-gradient(to bottom right, #e6f9e6, #ffffff);
-    color: #2a7f5e;
+    background: linear-gradient(to bottom right, rgba(137, 207, 240, 0.9), #ffffff);
+    color: #2a6a7f;
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
@@ -21,7 +21,7 @@
     font-size: 24px;
     background: transparent;
     border: none;
-    color: #2a7f5e;
+    color: #2a507f;
     cursor: pointer;
     position: absolute;
     top: 20px;
@@ -48,7 +48,7 @@
 }
 
 .sidebar h2 {
-    color: #2a7f5e;
+    color: #2a567f;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -76,7 +76,7 @@
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
     padding: 20px;
     width: 100%;
@@ -92,6 +92,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin: 10px;
     transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
 }
 
 .info-box:hover {
@@ -100,7 +101,7 @@
 }
 
 .info-box h2 {
-    color: #2a7f5e;
+    color: #2a597f;
 }
 
 .info-box p {

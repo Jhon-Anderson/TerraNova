@@ -4,16 +4,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Contaminacion from './pages/problem/contaminacion/Contaminacion';
 import Escasez from './pages/problem/escasez/Escasez';
 import Acidificacion from './pages/problem/acidificacion/Acidificacion';
-import Login from './pages/autenticacion/Login';
-import Registro from './pages/autenticacion/registro';
+import Autenticacion from './pages/autenticacion/Autenticacion';
 import Home from './pages/Home';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />
+        <Route path="/" element={<Autenticacion />} />
         <Route path="/home" element={<Home />} />
         <Route path="/contaminacion" element={<Contaminacion />} />
         <Route path="/escasez" element={<Escasez />} />
