@@ -10,12 +10,15 @@ const Home = () => {
     return (
         <div className="home-container">
             <Header />
-                <Canvas className="canvas" shadows>
-                    <Isla />
-                    <Cartel />
+            <Canvas className="canvas" shadows>
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+                <pointLight position={[-5, 5, 5]} intensity={0.5} />
+                <Isla />
+                <Cartel />
 
-                    <OrbitControls enablePan={true} enableZoom={true} />
-                </Canvas>
+                <OrbitControls enablePan={true} enableZoom={true} />
+            </Canvas>
             <Footer />
         </div>
     );
