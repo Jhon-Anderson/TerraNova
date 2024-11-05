@@ -33,14 +33,14 @@ function Acidificacion() {
                     <h2>Causas de la Acidificación</h2>
                     <p>
                         La principal causa de la acidificación es el aumento de las emisiones de CO2
-                        debido a actividades humanas, como la quema de combustibles fósiles.
+                        debido a actividades humanas, entre ellas esta la quema de combustibles fósiles, generando la principal afectación.
                     </p>
                 </div>
                 <div className="info-box">
                     <h2>Consecuencias de la Acidificación</h2>
                     <p>
-                        La acidificación afecta a la vida marina, incluyendo corales, moluscos y peces,
-                        y puede alterar los ecosistemas marinos.
+                        La acidificación afecta a la vida marina, incluyendo corales, moluscos y peces. Este fenómeno puede alterar 
+                        significativamente los ecosistemas marinos, afectando la biodiversidad.
                     </p>
                 </div>
             </div>
