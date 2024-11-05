@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../../../componentes/Footer';
 import Header from '../../../componentes/Header';
 import './Acidificacion.css';
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
+import Escenario3D from './Escenario3D'; // Crea este componente para el objeto 3D
 
 function Acidificacion() {
+    const [mostrarModal, setMostrarModal] = useState(false);
+
+    const handleVerClick = () => {
+        setMostrarModal(true);
+    };
+
+    const cerrarModal = () => {
+        setMostrarModal(false);
+    };
+
     return (
         <div className="acidificacion-container">
-        <Header/>
+            <Header />
             <h1 className="title">Acidificación de los Océanos</h1>
             <div className="info-boxes">
                 <div className="info-box">
@@ -31,6 +44,26 @@ function Acidificacion() {
                     </p>
                 </div>
             </div>
+
+            {/* Botón para abrir la ventana emergente */}
+            <div className="ver-boton-container">
+                <button className="ver-boton" onClick={handleVerClick}>Ver</button>
+            </div>
+
+            {/* Ventana emergente con el escenario 3D */}
+            {mostrarModal && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={cerrarModal}>&times;</span>
+                        <Suspense fallback={<span>Cargando...</span>}>
+                            <Canvas>
+                                <Escenario3D /> {/* Componente que renderiza el objeto 3D */}
+                            </Canvas>
+                        </Suspense>
+                    </div>
+                </div>
+            )}
+
             <Footer />
         </div>
     );
