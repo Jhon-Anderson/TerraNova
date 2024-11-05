@@ -8,9 +8,9 @@ const Isla = () => {
         <>
             <primitive
             object={scene}
-            scale={0.5}
-            position={[1, -2.5, 1.2]}
-            rotation={[0, Math.PI / -5, 0]}/>;
+            scale={5}
+            position={[-0.5, -1, -0.2]}
+            rotation={[0, Math.PI / -4, 0]}/>;
         </>
     );
 };
