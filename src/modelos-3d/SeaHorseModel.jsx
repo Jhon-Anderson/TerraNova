@@ -5,7 +5,7 @@ const SeaHorseModel = () => {
     const { scene } = useGLTF('/model-3d/Sea_horse.glb');
     
     return (
-        <primitive object={scene} scale={0.025} position={[0, -0.256, 0.231]} />
+        <primitive object={scene} scale={0.5} position={[0.1, -0.04, 4.7]}  rotation={[0, Math.PI / -2, 0]}/>
     );
 };
 
