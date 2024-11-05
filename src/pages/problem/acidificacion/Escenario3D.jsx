@@ -1,15 +1,14 @@
 import React from 'react';
-import { useFrame } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import SeaHorseModel from '../../../modelos-3d/SeaHorseModel';
 
 function Escenario3D() {
     return (
         <>
             <ambientLight intensity={0.5} />
-            <pointLight position={[3, -2, 10]} />
-            <mesh position={[0, 0, 0]}>
-                <sphereGeometry args={[1, 32, 32]} />
-                <meshStandardMaterial color="blue" />
-            </mesh>
+            <pointLight position={[10, 10, 10]} />
+            <SeaHorseModel />
+            <OrbitControls />
         </>
     );
 }

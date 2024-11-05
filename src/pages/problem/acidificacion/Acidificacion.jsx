@@ -4,6 +4,8 @@ import Header from '../../../componentes/Header';
 import './Acidificacion.css';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
+import { OrbitControls } from '@react-three/drei';
+import SeaHorseModel from '../../../modelos-3d/SeaHorseModel';
 import Escenario3D from './Escenario3D'; // Crea este componente para el objeto 3D
 
 function Acidificacion() {
@@ -39,7 +41,7 @@ function Acidificacion() {
                 <div className="info-box">
                     <h2>Consecuencias de la Acidificación</h2>
                     <p>
-                        La acidificación afecta a la vida marina, incluyendo corales, moluscos y peces. Este fenómeno puede alterar 
+                        La acidificación afecta a la vida marina, incluyendo corales, moluscos y peces. Este fenómeno puede alterar
                         significativamente los ecosistemas marinos, afectando la biodiversidad.
                     </p>
                 </div>
@@ -50,14 +52,19 @@ function Acidificacion() {
                 <button className="ver-boton" onClick={handleVerClick}>Ver</button>
             </div>
 
-            {/* Ventana emergente con el escenario 3D */}
+            {/* Ventana emergente */}
             {mostrarModal && (
                 <div className="modal">
                     <div className="modal-content">
-                        <span className="close" onClick={cerrarModal}>&times;</span>
-                        <Suspense fallback={<span>Cargando...</span>}>
-                            <Canvas>
-                                <Escenario3D /> {/* Componente que renderiza el objeto 3D */}
+                        <button className="close" onClick={cerrarModal}>&times;</button>
+                        {/* Canvas con el modelo 3D dentro del modal */}
+                        <Suspense fallback={<span>Cargando modelo...</span>}>
+                            <Canvas className="canvas">
+                                <ambientLight intensity={0.5} />
+                                <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+                                <pointLight position={[-5, 5, 5]} intensity={0.5} />
+                                <SeaHorseModel />
+                                <OrbitControls enablePan={true} enableZoom={true} />
                             </Canvas>
                         </Suspense>
                     </div>
