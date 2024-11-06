@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Text, useGLTF } from '@react-three/drei';
 
@@ -15,16 +16,17 @@ const Cartel = () => {
         <>
             <primitive 
                 object={scene} 
-                scale={1} 
-                position={[-3, -1.5, 2]} 
+                scale={5} 
+                position={[0, -1, 0]} 
+                rotation={[0, Math.PI / 6, 0]}
             />
             <Text
-                position={[0, 0.19, 2]}
-                fontSize={0.14}
+                position={[-0.1, 0.3, 1]}
+                fontSize={0.13}
                 color="white"
                 anchorX="center"
                 anchorY="middle"
-                maxWidth={2.5}
+                maxWidth={3.45}
                 lineHeight={1.1}
                 textAlign="justify"
                 wrap={true}
