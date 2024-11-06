@@ -41,7 +41,7 @@ const Header = () => {
                     <h2>MENÚ</h2>
                     <ul>
                         <li onClick={() => { navigate('/home'); closeMenu(); }}>Home</li>
-                        <li onClick={() => { navigate('/juegos'); closeMenu(); }}>Juegos</li>
+                        <li onClick={() => { navigate('/lobby'); closeMenu(); }}>Lobby</li>
                         <li onClick={() => { navigate('/educacion'); closeMenu(); }}>Educación</li>
                         <li onClick={() => { navigate('/imagenes'); closeMenu(); }}>Imágenes</li>
                         <li onClick={() => { navigate('/videos'); closeMenu(); }}>Videos</li>
