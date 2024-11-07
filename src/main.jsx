@@ -17,6 +17,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/contaminacion" element={<Contaminacion />} />
         <Route path="/escasez" element={<Escasez />} />
         <Route path="/acidificacion" element={<Acidificacion />} />
+        
         <Route path="/lobby" element={<Lobby />} />
       </Routes>
     </Router>
