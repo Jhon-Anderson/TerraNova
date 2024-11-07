@@ -4,11 +4,11 @@ import Footer from '../../../componentes/Footer';
 import Header from '../../../componentes/Header';
 import './Escasez.css';
 
-function Escasez() {
+const Escasez = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/agua1');
+        navigate('/Escena'); // Asegúrate de reemplazar '/ruta-a-escena' con la ruta real de `Escena`
     };
 
     return (
@@ -41,6 +41,6 @@ function Escasez() {
             <Footer />
         </div>
     );
-}
+};
 
 export default Escasez;
