@@ -6,7 +6,7 @@ import Escasez from './pages/problem/escasez/Escasez';
 import Acidificacion from './pages/problem/acidificacion/Acidificacion';
 import Autenticacion from './pages/autenticacion/Autenticacion';
 import Home from './pages/Home';
-
+import Agua1 from './pages/problem/escasez/agua1';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
@@ -16,6 +16,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/contaminacion" element={<Contaminacion />} />
         <Route path="/escasez" element={<Escasez />} />
         <Route path="/acidificacion" element={<Acidificacion />} />
+        <Route path="/agua1" element={<Agua1 />} /> 
       </Routes>
     </Router>
   </StrictMode>
