@@ -64,7 +64,7 @@ function Acidificacion() {
                                 <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
                                 <pointLight position={[-5, 5, 5]} intensity={0.5} />
                                 <SeaHorseModel />
-                                <OrbitControls enablePan={true} enableZoom={true} />
+                                <OrbitControls />
                             </Canvas>
                         </Suspense>
                     </div>
