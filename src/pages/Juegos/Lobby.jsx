@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import Fly from '../../modelos-3d/Fly.jsx';
+import Chiamaia from '../../modelos-3d/Chiamaia';
 
 const Ground = () => (
   <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
@@ -79,7 +79,7 @@ const Scene = () => {
       <Tree position={[20, 0, 5]} />
       
       {/* Cargar el modelo Fly y pasarlo con la posición */}
-      <Fly position={flyPosition} ref={flyRef} />
+      <Chiamaia position={flyPosition} ref={flyRef} />
 
       <OrbitControls enableDamping enableZoom={false} />
     </>
@@ -87,7 +87,7 @@ const Scene = () => {
 };
 
 const Lobby = () => (
-  <Canvas camera={{ position: [0, 15, 25], fov: 45 }}>
+  <Canvas camera={{ position: [0, 15, 25], fov: 20}}>
     <Scene />
   </Canvas>
 );
