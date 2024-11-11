@@ -8,6 +8,7 @@ import { OrbitControls, Sky, Stars } from '@react-three/drei';
 import SeaHorseModel from '../../../modelos-3d/SeaHorseModel';
 import Escenario3D from './Escenario3D'; // Crea este componente para el objeto 3D
 import Title3D from '../../../componentes/Title3D';
+import SeaFloorModel from '../../../modelos-3d/SeaFloorModel';
 
 function Acidificacion() {
     const [mostrarModal, setMostrarModal] = useState(false);
@@ -70,6 +71,7 @@ function Acidificacion() {
                                 <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
                                 <Title3D />
                                 <SeaHorseModel />
+                                <SeaFloorModel/>
                                 <OrbitControls />
                             </Canvas>
                         </Suspense>
