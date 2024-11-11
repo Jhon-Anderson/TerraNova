@@ -1,15 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../../../componentes/Footer';
 import Header from '../../../componentes/Header';
 import './Escasez.css';
 
-function Escasez() {
+const Escasez = () => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/Escena'); // Asegúrate de reemplazar '/ruta-a-escena' con la ruta real de `Escena`
+    };
+
     return (
         <div className="escasez-container">
-            <Header/>
+            <Header />
             <h1 className="title">Escasez de Agua</h1>
             <div className="info-boxes">
-                <div className="info-box">
+                <div className="info-box" onClick={handleClick} style={{ cursor: 'pointer' }}>
                     <h2>¿Qué es la Escasez de Agua?</h2>
                     <p>
                         La escasez de agua se refiere a la falta de acceso suficiente al agua dulce
@@ -34,6 +41,6 @@ function Escasez() {
             <Footer />
         </div>
     );
-}
+};
 
 export default Escasez;
