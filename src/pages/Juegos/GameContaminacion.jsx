@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Chiamaia from '../../modelos-3d/Chiamaia';
+import Indicador from '../../modelos-3d/Indicador';
 
 const Ground = () => (
   <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
@@ -19,12 +20,10 @@ const River = () => (
 
 const Tree = ({ position }) => (
   <group position={position}>
-    {/* Tronco */}
     <mesh position={[0, 1, 0]}>
       <cylinderGeometry args={[0.3, 0.5, 2]} />
       <meshStandardMaterial color="brown" />
     </mesh>
-    {/* Hojas */}
     <mesh position={[0, 3, 0]}>
       <sphereGeometry args={[1.5, 8, 8]} />
       <meshStandardMaterial color="darkgreen" />
@@ -36,7 +35,6 @@ const Scene = () => {
   const [flyPosition, setFlyPosition] = useState([0, 0, 0]);
   const flyRef = useRef();
 
-  // Función para mover el modelo Fly con las teclas
   const moveFly = (direction) => {
     setFlyPosition((prev) => {
       const newPosition = [...prev];
@@ -66,7 +64,6 @@ const Scene = () => {
       <directionalLight position={[10, 20, 10]} intensity={0.8} />
       <Ground />
       <River />
-      {/* Añadir árboles */}
       <Tree position={[-20, 0, -5]} />
       <Tree position={[-10, 0, -5]} />
       <Tree position={[0, 0, -5]} />
@@ -77,19 +74,21 @@ const Scene = () => {
       <Tree position={[0, 0, 5]} />
       <Tree position={[10, 0, 5]} />
       <Tree position={[20, 0, 5]} />
-      
-      {/* Cargar el modelo Fly y pasarlo con la posición */}
+
       <Chiamaia position={flyPosition} ref={flyRef} />
+
+      {/* Mostrar el modelo Indicador tres veces con diferentes posiciones */}
+      <Indicador position={[-2, 0, -8]} />
 
       <OrbitControls enableDamping enableZoom={false} />
     </>
   );
 };
 
-const Lobby = () => (
-  <Canvas camera={{ position: [0, 15, 25], fov: 20}}>
-    <Scene />
+const GameContaminacion = () => (
+  <Canvas camera={{ position: [0, 15, 25], fov: 20 }}>
+    <Scene />    
   </Canvas>
 );
 
-export default Lobby;
+export default GameContaminacion;

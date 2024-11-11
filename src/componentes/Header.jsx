@@ -5,6 +5,7 @@ import './Header.css';
 const Header = () => {
     const navigate = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
+    const [subMenuOpen, setSubMenuOpen] = useState(false); // Para el submenú en el menú lateral
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -12,6 +13,14 @@ const Header = () => {
 
     const closeMenu = () => {
         setMenuOpen(false);
+    };
+
+    const handleMouseEnter = () => {
+        setSubMenuOpen(true);
+    };
+
+    const handleMouseLeave = () => {
+        setSubMenuOpen(false);
     };
 
     return (
@@ -24,7 +33,7 @@ const Header = () => {
             <button className="menu-toggle" onClick={toggleMenu}>
                 &#9776;
             </button>
-
+            
             <nav className="navbar">
                 <ul className="nav-links">
                     <li><button onClick={() => navigate('/contaminacion')} className="nav-button">Contaminación</button></li>
@@ -33,7 +42,7 @@ const Header = () => {
                 </ul>
             </nav>
 
-            <button onClick={() => navigate('/')} className="logout-button">Cerrar Sesión</button>
+            <button onClick={() => navigate('/')} className="logout-button">Cerrar Sesión</button>            
 
             {/* Menú lateral */}
             {menuOpen && (
@@ -41,7 +50,20 @@ const Header = () => {
                     <h2>MENÚ</h2>
                     <ul>
                         <li onClick={() => { navigate('/home'); closeMenu(); }}>Home</li>
-                        <li onClick={() => { navigate('/lobby'); closeMenu(); }}>Juegos</li>
+                        {/* Menú con subopciones de Juegos */}
+                        <li
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            Juegos
+                            {subMenuOpen && (
+                                <ul className="sub-menu">
+                                    <li><button onClick={() => navigate('/GameContaminacion')} className="nav-button">Contaminación</button></li>
+                                    <li><button onClick={() => navigate('/escasez')} className="nav-button">Escasez</button></li>
+                                    <li><button onClick={() => navigate('/acidificacion')} className="nav-button">Acidificación</button></li>
+                                </ul>
+                            )}
+                        </li>
                         <li onClick={() => { navigate('/educacion'); closeMenu(); }}>Educación</li>
                         <li onClick={() => { navigate('/imagenes'); closeMenu(); }}>Imágenes</li>
                         <li onClick={() => { navigate('/videos'); closeMenu(); }}>Videos</li>

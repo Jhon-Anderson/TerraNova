@@ -5,10 +5,9 @@ import Contaminacion from './pages/problem/contaminacion/Contaminacion';
 import Escasez from './pages/problem/escasez/Escasez';
 import Acidificacion from './pages/problem/acidificacion/Acidificacion';
 import Autenticacion from './pages/autenticacion/Autenticacion';
-import Lobby from './pages/Juegos/Lobby';
 import Escena from './pages/problem/escasez/Escena';
+import GameContaminacion from './pages/Juegos/GameContaminacion';
 import Home from './pages/Home';
-
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -19,8 +18,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/contaminacion" element={<Contaminacion />} />
         <Route path="/escasez" element={<Escasez />} />
         <Route path="/acidificacion" element={<Acidificacion />} />        
-        <Route path="/lobby" element={<Lobby />} />
         <Route path="/escena" element={<Escena />} /> 
+        <Route path="/gamecontaminacion" element={<GameContaminacion />} /> 
       </Routes>
     </Router>
   </StrictMode>
