@@ -4,9 +4,10 @@ import Header from '../../../componentes/Header';
 import './Acidificacion.css';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, Sky, Stars } from '@react-three/drei';
 import SeaHorseModel from '../../../modelos-3d/SeaHorseModel';
 import Escenario3D from './Escenario3D'; // Crea este componente para el objeto 3D
+import Title3D from '../../../componentes/Title3D';
 
 function Acidificacion() {
     const [mostrarModal, setMostrarModal] = useState(false);
@@ -35,7 +36,7 @@ function Acidificacion() {
                     <h2>Causas de la Acidificación</h2>
                     <p>
                         La principal causa de la acidificación es el aumento de las emisiones de CO2
-                        debido a actividades humanas, entre ellas esta la quema de combustibles fósiles, generando la principal afectación.
+                        debido a actividades humanas, entre ellas está la quema de combustibles fósiles, generando la principal afectación.
                     </p>
                 </div>
                 <div className="info-box">
@@ -61,8 +62,13 @@ function Acidificacion() {
                         <Suspense fallback={<span>Cargando modelo...</span>}>
                             <Canvas className="canvas">
                                 <ambientLight intensity={0.5} />
-                                <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+                                <directionalLight position={[5, 5, 10]} intensity={10} castShadow />
                                 <pointLight position={[-5, 5, 5]} intensity={0.5} />
+
+                                {/* Agregar cielo y estrellas */}
+                                <Sky distance={450000} sunPosition={[1, 1, 0]} inclination={0} azimuth={0.25} />
+                                <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
+                                <Title3D />
                                 <SeaHorseModel />
                                 <OrbitControls />
                             </Canvas>

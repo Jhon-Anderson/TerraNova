@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 
 const SeaHorseModel = () => {
-    const { scene } = useGLTF('/model-3d/Sea_horse.glb');
+    const { scene } = useGLTF('/model-3d/pulpo.glb');
     const [position, setPosition] = useState([0.04, -0.02, 4.7]);
 
     // Maneja las pulsaciones de teclas para mover el modelo
