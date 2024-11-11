@@ -19,7 +19,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/escasez" element={<Escasez />} />
         <Route path="/acidificacion" element={<Acidificacion />} />        
         <Route path="/escena" element={<Escena />} /> 
-        <Route path="/gamecontaminacion" element={<GameContaminacion />} /> 
+        <Route path="/gamecontaminacion" element={<GameContaminacion />} />  
       </Routes>
     </Router>
   </StrictMode>
