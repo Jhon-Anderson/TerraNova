@@ -4,7 +4,7 @@ import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
 import { DirectionalLight } from 'three';
 import { useThree } from '@react-three/fiber';
 
-const Barco = ({ position, scale = 0.01, rotation = [Math.PI / -2, 0, 0] }) => {
+const Barco = ({ position, scale = 0.01, rotation = [Math.PI / -2, 0, -1.6] }) => {
   const [obj, setObj] = useState();
   const { scene } = useThree();
 
