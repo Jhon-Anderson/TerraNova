@@ -30,7 +30,7 @@ const SeaHorseModel = () => {
     }, []);
 
     return (
-        <primitive object={scene} scale={0.5} position={position} />
+        <primitive object={scene} scale={1.5} position={[-0.1, -0.3, -1]} />
     );
 };
 

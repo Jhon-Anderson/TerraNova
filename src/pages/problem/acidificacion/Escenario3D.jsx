@@ -11,10 +11,10 @@ function Escenario3D() {
             <pointLight position={[10, 10, 10]} />
 
             {/* Suelo marino más cerca del caballito de mar */}
-            <SeaFloorModel position={[0, -1, 3]} scale={2} />
+            <SeaFloorModel position={[0, -1, 3]} scale={1} />
 
             {/* Modelo del caballito de mar */}
-            <SeaHorseModel />
+            <SeaHorseModel  position={[2, 3.5, -60]} scale={0.5} rotation={[0, Math.PI / 4, 0]}  />
         </>
     );
 }
