@@ -4,14 +4,14 @@ import Header from '../../../componentes/Header';
 import './Acidificacion.css';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
-import { OrbitControls, Sky, Stars } from '@react-three/drei';
+import { OrbitControls, Sky, Stars, Html } from '@react-three/drei';
 import SeaHorseModel from '../../../modelos-3d/SeaHorseModel';
-import Escenario3D from './Escenario3D'; // Crea este componente para el objeto 3D
-import Title3D from '../../../componentes/Title3D';
 import SeaFloorModel from '../../../modelos-3d/SeaFloorModel';
+import Title3D from '../../../componentes/Title3D';
 
 function Acidificacion() {
     const [mostrarModal, setMostrarModal] = useState(false);
+    const [mostrarInstrucciones, setMostrarInstrucciones] = useState(false);
 
     const handleVerClick = () => {
         setMostrarModal(true);
@@ -19,6 +19,11 @@ function Acidificacion() {
 
     const cerrarModal = () => {
         setMostrarModal(false);
+        setMostrarInstrucciones(false); // Cierra también las instrucciones
+    };
+
+    const handleBurbujaClick = () => {
+        setMostrarInstrucciones(true);
     };
 
     return (
@@ -62,16 +67,34 @@ function Acidificacion() {
                         {/* Canvas con el modelo 3D dentro del modal */}
                         <Suspense fallback={<span>Cargando modelo...</span>}>
                             <Canvas className="canvas">
-                                <ambientLight intensity={0.5} />
+                                <ambientLight intensity={0.2} />
                                 <directionalLight position={[5, 5, 10]} intensity={10} castShadow />
-                                <pointLight position={[-5, 5, 5]} intensity={0.5} />
+                                <pointLight position={[2, 0, 5]} intensity={2} />
 
-                                {/* Agregar cielo y estrellas */}
+                                {/* Cielo y estrellas */}
                                 <Sky distance={450000} sunPosition={[1, 1, 0]} inclination={0} azimuth={0.25} />
                                 <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
+
+                                {/* Modelos 3D */}
                                 <Title3D />
                                 <SeaHorseModel />
-                                <SeaFloorModel/>
+                                <SeaFloorModel />
+
+                                {/* Botón burbuja */}
+                                <mesh position={[1, 1, 2]} onClick={handleBurbujaClick}>
+                                    <sphereGeometry args={[0.2, 32, 32]} />
+                                    <meshStandardMaterial color="lightblue" transparent opacity={0.7} />
+                                </mesh>
+
+                                {/* Mostrar instrucciones si se ha hecho clic */}
+                                {mostrarInstrucciones && (
+                                    <Html position={[-4, 2, 1]} center>
+                                        <div style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.6)', padding: '10px', borderRadius: '8px' }}>
+                                            Desplazate con las flechas
+                                        </div>
+                                    </Html>
+                                )}
+
                                 <OrbitControls />
                             </Canvas>
                         </Suspense>

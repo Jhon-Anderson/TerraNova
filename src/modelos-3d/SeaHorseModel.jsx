@@ -3,7 +3,7 @@ import { useGLTF } from '@react-three/drei';
 
 const SeaHorseModel = () => {
     const { scene } = useGLTF('/model-3d/pulpo.glb');
-    const [position, setPosition] = useState([0.04, -0.02, 4.7]);
+    const [position, setPosition] = useState([0.04, -0.02, 0.7]);
 
     // Maneja las pulsaciones de teclas para mover el modelo
     useEffect(() => {
@@ -30,7 +30,7 @@ const SeaHorseModel = () => {
     }, []);
 
     return (
-        <primitive object={scene} scale={0.5} position={position} />
+        <primitive object={scene} scale={1.5} position={position} />
     );
 };
 
