@@ -10,19 +10,26 @@ const Home = () => {
     return (
         <div className="home-container">
             <Header />
-            <Canvas className="canvas" shadows>
-                <ambientLight intensity={0.5} />
-                <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-                <pointLight position={[-5, 5, 5]} intensity={0.5} />
+            <Canvas
+                className="canvas"
+                camera={{ position: [5, 5, 10], fov: 45 }}
+            >
+                {/* Suelo verde */}
+                <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]}>
+                    <planeGeometry args={[50, 50]} />
+                    <meshBasicMaterial color="green" /> {/* Material básico sin iluminación */}
+                </mesh>
+
+                {/* Modelos 3D */}
                 <Isla />
                 <Cartel />
 
+                {/* Controles de cámara */}
                 <OrbitControls enablePan={true} enableZoom={true} />
             </Canvas>
             <Footer />
         </div>
     );
 };
-
 
 export default Home;
