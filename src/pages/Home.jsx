@@ -16,7 +16,6 @@ const Home = () => {
                 <pointLight position={[-5, 5, 5]} intensity={0.5} />
                 <Isla />
                 <Cartel />
-
                 <OrbitControls enablePan={true} enableZoom={true} />
             </Canvas>
             <Footer />
