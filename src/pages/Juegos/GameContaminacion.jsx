@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars, Html } from '@react-three/drei';
+import { OrbitControls, Stars, Text, Html } from '@react-three/drei';
 import Chiamaia from '../../modelos-3d/Chiamaia';
 import Indicador from '../../modelos-3d/Indicador';
 
@@ -19,46 +19,33 @@ const Tree = ({ position }) => (
 
 const Scene = () => {
   const [flyPosition, setFlyPosition] = useState([0, 0, 0]);
-  const [showText, setShowText] = useState(false);  // Estado para mostrar el texto
-  const [showInstructions, setShowInstructions] = useState(false); // Estado para mostrar instrucciones
   const flyRef = useRef();
 
   const moveFly = (direction) => {
     setFlyPosition((prev) => {
       const newPosition = [...prev];
-      if (direction === 'up') newPosition[2] -= 1;
-      if (direction === 'down') newPosition[2] += 1;
-      if (direction === 'left') newPosition[0] -= 1;
-      if (direction === 'right') newPosition[0] += 1;
+      if (direction === 'up') newPosition[2] -= 0.5;
+      if (direction === 'down') newPosition[2] += 0.5;
+      if (direction === 'left') newPosition[0] -= 0.5;
+      if (direction === 'right') newPosition[0] += 0.5;
       return newPosition;
     });
   };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowUp') moveFly('up');
-      if (e.key === 'ArrowDown') moveFly('down');
-      if (e.key === 'ArrowLeft') moveFly('left');
-      if (e.key === 'ArrowRight') moveFly('right');
+      if (e.key === 'ArrowUp' || e.key === 'w') moveFly('up');
+      if (e.key === 'ArrowDown' || e.key === 's') moveFly('down');
+      if (e.key === 'ArrowLeft' || e.key === 'a') moveFly('left');
+      if (e.key === 'ArrowRight' || e.key === 'd') moveFly('right');
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Manejador de evento de clic para mostrar el texto de contaminación
-  const handleClick = () => {
-    setShowText(true);  // Muestra el texto al hacer clic
-  };
-
-  // Manejador de evento de clic para mostrar las instrucciones
-  const handleInstructionsClick = () => {
-    setShowInstructions(true);  // Muestra las instrucciones al hacer clic
-  };
-
   return (
     <>
-      {/* Implementación de iluminación adicional */}
       <ambientLight intensity={0.5} />
       <directionalLight
         position={[10, 20, 10]}
@@ -75,14 +62,12 @@ const Scene = () => {
       <pointLight position={[-10, 10, -10]} intensity={0.5} />
       <spotLight position={[0, 10, 0]} angle={0.15} intensity={0.8} castShadow />
 
-      {/* Estrellas y fondo del cielo */}
       <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
       <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
         <planeGeometry args={[100, 100]} />
         <meshStandardMaterial color="green" />
       </mesh>
 
-      {/* Árboles */}
       <Tree position={[-20, 0, -5]} />
       <Tree position={[-10, 0, -5]} />
       <Tree position={[10, 0, -5]} />
@@ -92,47 +77,40 @@ const Scene = () => {
       <Tree position={[10, 0, 5]} />
       <Tree position={[20, 0, 5]} />
 
-      {/* Modelos 3D */}
       <Chiamaia position={flyPosition} ref={flyRef} castShadow />
       <Indicador position={[0, 0, -8]} castShadow />
 
-      {/* Texto sobre el indicador, se muestra solo si showText es true */}
-      {showText && (
-        <Html position={[-3.3, 5, -8]}>
-          <p style={{ color: 'black', fontSize: '1rem', textAlign: 'justify', padding: '10px', width: '20rem' }}>
-            La contaminación afecta el aire, agua y suelo, amenazando la biodiversidad y salud. Es esencial reducir residuos, proteger ecosistemas y fomentar la sostenibilidad.
-          </p>
-        </Html>
-      )}
+      {/* Texto 3D flotante */}
+      <Text
+        position={[0, 7, -10]}
+        fontSize={2}
+        color="red"
+        anchorX="center"
+        anchorY="middle"
+      >
+        CONTAMINACIÓN
+      </Text>
 
-      {/* Instrucciones, se muestra solo si showInstructions es true */}
-      {showInstructions && (
-        <Html position={[-3.3, 2, -8]}>
-          <p style={{ color: 'black', fontSize: '1rem', textAlign: 'justify', padding: '10px', width: '20rem' }}>
-            Para mover el personaje usa las flechas del teclado (arriba, abajo, izquierda, derecha) o haz clic y arrastra el mouse.
-          </p>
-        </Html>
-      )}
+      <Html position={[-10, 6, -10]}>
+        <div style={{ textAlign: 'center', color: 'black', fontSize: '1.7rem' }}>
+          CUIDEMOS EL MUNDO
+        </div>
+      </Html> 
 
-      {/* Elementos HTML 3D */}
-      <Html position={[-10, 2, -10]}>
-        <h1 style={{ color: 'white', fontSize: '2rem' }}>¡Bienvenido a la escena!</h1>
-        <button style={{ backgroundColor: 'green', color: 'white', padding: '10px' }} onClick={handleClick}>
-          Haz clic aquí
-        </button>
-        <button style={{ backgroundColor: 'blue', color: 'white', padding: '10px', marginLeft: '20px' }} onClick={handleInstructionsClick}>
-          Instrucciones
-        </button>
+      {/* Texto 2D */}
+      <Html position={[4, 6, -10]}>
+        <div style={{ textAlign: 'center', color: 'black', fontSize: '1.7rem' }}>
+          NO MAS CONTAMINACION
+        </div>
       </Html>
 
-      {/* Control de la cámara */}
       <OrbitControls enableDamping enableZoom={false} />
     </>
   );
 };
 
 const GameContaminacion = () => (
-  <Canvas camera={{ position: [0, 15, 25], fov: 20 }} shadows>
+  <Canvas camera={{ position: [0, 5, 20], fov: 40 }} shadows>
     <Scene />
   </Canvas>
 );
