@@ -10,7 +10,7 @@ const Chiamaia = ({ position }) => {
                 object={scene}
                 scale={20}
                 position={position} // Usar la posición pasada como prop
-                rotation={[0, Math.PI, 0]} // Rotación de 180 grados en el eje Y
+                rotation={[0, Math.PI / 2.3, 0]} // Rotación de 180 grados en el eje Y
             />
         </>
     );
