@@ -56,19 +56,19 @@ const Escena = () => {
         scene.background = backgroundTexture;
       }}
     >
-      <Physics gravity={[0, -0.5, 0]}>
+      <Physics gravity={[0, 0, 0]}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[-10, 10, 10]} intensity={0.5} />
 
-        <Oceano />
+        <Oceano  />
 
         <Suspense fallback={null}>
          
           <Barco position={[position[0], position[1], position[2]]} />
 
         
-          <Modelo3D position={[2, 3.5, -60]} scale={0.5} rotation={[0, Math.PI / 4, 0]} />
-          <Cartel position={[10, 3.5, -60]} scale={10} rotation={[0, Math.PI / 4, 0]} />
+          <Modelo3D position={[2, -1.5, -85]} scale={6} rotation={[0, Math.PI / 105, 0]} />
+          <Cartel position={[10, 3.5, -100]} scale={10} rotation={[0, Math.PI / 4, 0]} />
         </Suspense>
 
        
