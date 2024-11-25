@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars, Text, Html } from '@react-three/drei';
+import { OrbitControls, Stars, Text, Html, Cloud, Sky } from '@react-three/drei'; // Asegúrate de importar Sky
 import { Physics, useBox, usePlane } from '@react-three/cannon';
 import Chiamaia from '../../modelos-3d/Chiamaia';
 import Indicador from '../../modelos-3d/Indicador';
@@ -66,23 +66,23 @@ const RandomFallingObjects = () => {
 };
 
 const Scene = () => {
-  const [flyPosition, setFlyPosition] = useState([0, -0.2, 0]); // Posición inicial.
-  const [moving, setMoving] = useState(false); // Controla si el modelo se está moviendo.
+  const [flyPosition, setFlyPosition] = useState([0, -0.2, 0]);
+  const [moving, setMoving] = useState(false);
 
   const moveFly = (direction) => {
-    setMoving(true); // Activa el estado de movimiento.
+    setMoving(true);
     setFlyPosition((prev) => {
       const newPosition = [...prev];
-      if (direction === 'up') newPosition[2] -= 0.5; // Adelante (Z).
-      if (direction === 'down') newPosition[2] += 0.5; // Atrás (Z).
-      if (direction === 'left') newPosition[0] -= 0.5; // Izquierda (X).
-      if (direction === 'right') newPosition[0] += 0.5; // Derecha (X).
-      newPosition[1] = -0.2; // Asegura que el modelo se mantenga a nivel del suelo.
+      if (direction === 'up') newPosition[2] -= 0.5;
+      if (direction === 'down') newPosition[2] += 0.5;
+      if (direction === 'left') newPosition[0] -= 0.5;
+      if (direction === 'right') newPosition[0] += 0.5;
+      newPosition[1] = -0.2;
       return newPosition;
     });
   };
 
-  const stopMoving = () => setMoving(false); // Detiene el movimiento.
+  const stopMoving = () => setMoving(false);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -120,7 +120,28 @@ const Scene = () => {
       <pointLight position={[-10, 10, -10]} intensity={0.5} />
       <spotLight position={[0, 10, 0]} angle={0.15} intensity={0.8} castShadow />
 
+     {/* Sky con gradiente azul y blanco */}
+     <Sky
+        distance={450000} // Ajusta la distancia para modificar la intensidad del cielo
+        inclination={0.5}  // Ajusta la inclinación para cambiar el ángulo del cielo
+        azimuth={0.25}     // Ajusta el azimut para cambiar la dirección del sol
+        turbidity={10}     // Ajusta la turbidez para más detalles en el cielo
+        rayleigh={2}       // Ajusta la dispersión de la luz
+        mieCoefficient={0.005} // Ajusta la dispersión de la luz
+        mieDirectionalG={0.8} // Ajusta el efecto de luz direccional
+        skyColor="#87CEEB"  // Azul claro
+        sunColor="#87CEEB"  // Blanco
+      />
+
+      {/* Estrellas */}
       <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
+
+      {/* Nubes */}
+      <Cloud position={[10, 10, -10]} />
+      <Cloud position={[-10, 8, 5]} />
+      <Cloud position={[-10, 8, -15]} />
+      <Cloud position={[5, 9, 10]} />
+      
 
       {/* Modelo vinculado a flyPosition */}
       <Chiamaia position={flyPosition} castShadow />
@@ -130,7 +151,7 @@ const Scene = () => {
       <Text
         position={[flyPosition[0], 1.5, flyPosition[2]]}
         fontSize={0.5}
-        color={moving ? "lime" : "red"}
+        color={moving ? 'lime' : 'red'}
         anchorX="center"
         anchorY="middle"
       >
@@ -169,7 +190,6 @@ const Scene = () => {
     </>
   );
 };
-
 
 const GameContaminacion = () => (
   <Canvas camera={{ position: [0, 5, 20], fov: 40 }} shadows>
