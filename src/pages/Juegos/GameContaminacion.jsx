@@ -153,8 +153,22 @@ const Scene = () => {
 
       <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
 
-      <Chiamaia position={flyPosition} castShadow />    
-      <Indicador position={[0, 0, -8]} castShadow />      
+      <Chiamaia position={flyPosition} castShadow />
+      <Indicador position={[0, 0, -8]} castShadow />
+      {/* Texto superpuesto */}
+      <Text
+        position={[-0.05, 4.2, -7]} // Posición del texto
+        fontSize={0.4}
+        color="black"
+        anchorX="center"
+        anchorY="middle"
+        maxWidth={6}
+        lineHeight={1.1}
+        textAlign="justify"
+        wrap={true}
+      >
+        La contaminación pone en riesgo el ambiente y la salud, necesitando acciones sostenibles.La contaminación amenaza el medio ambiente y la salud, y es crucial adoptar prácticas más sostenibles.
+      </Text>
 
       <Tree position={[-20, 0, -5]} />
       <Tree position={[-10, 0, -5]} />
