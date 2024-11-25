@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars, Text, Html, Cloud, Sky } from '@react-three/drei'; // Asegúrate de importar Sky
+import { OrbitControls, Stars, Text, Html, Cloud, Sky } from '@react-three/drei';
 import { Physics, useBox, usePlane } from '@react-three/cannon';
 import Chiamaia from '../../modelos-3d/Chiamaia';
 import Indicador from '../../modelos-3d/Indicador';
@@ -120,44 +120,28 @@ const Scene = () => {
       <pointLight position={[-10, 10, -10]} intensity={0.5} />
       <spotLight position={[0, 10, 0]} angle={0.15} intensity={0.8} castShadow />
 
-     {/* Sky con gradiente azul y blanco */}
-     <Sky
-        distance={450000} // Ajusta la distancia para modificar la intensidad del cielo
-        inclination={0.5}  // Ajusta la inclinación para cambiar el ángulo del cielo
-        azimuth={0.25}     // Ajusta el azimut para cambiar la dirección del sol
-        turbidity={10}     // Ajusta la turbidez para más detalles en el cielo
-        rayleigh={2}       // Ajusta la dispersión de la luz
-        mieCoefficient={0.005} // Ajusta la dispersión de la luz
-        mieDirectionalG={0.8} // Ajusta el efecto de luz direccional
-        skyColor="#87CEEB"  // Azul claro
-        sunColor="#87CEEB"  // Blanco
+      <Sky
+        distance={450000}
+        inclination={0.5}
+        azimuth={0.25}
+        turbidity={10}
+        rayleigh={2}
+        mieCoefficient={0.005}
+        mieDirectionalG={0.8}
+        skyColor="#87CEEB"
+        sunColor="#87CEEB"
       />
 
-      {/* Estrellas */}
       <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
 
-      {/* Nubes */}
       <Cloud position={[10, 10, -10]} />
       <Cloud position={[-10, 8, 5]} />
       <Cloud position={[-10, 8, -15]} />
       <Cloud position={[5, 9, 10]} />
-      
 
-      {/* Modelo vinculado a flyPosition */}
       <Chiamaia position={flyPosition} castShadow />
       <Indicador position={[0, 0, -8]} castShadow />
 
-      {/* Indicador de movimiento */}
-      <Text
-        position={[flyPosition[0], 1.5, flyPosition[2]]}
-        fontSize={0.5}
-        color={moving ? 'lime' : 'red'}
-        anchorX="center"
-        anchorY="middle"
-      >
-      </Text>
-
-      {/* Árboles */}
       <Tree position={[-20, 0, -5]} />
       <Tree position={[-10, 0, -5]} />
       <Tree position={[10, 0, -5]} />
@@ -167,23 +151,33 @@ const Scene = () => {
       <Tree position={[10, 0, 5]} />
       <Tree position={[20, 0, 5]} />
 
-      {/* Física del suelo */}
       <Ground />
-
-      {/* Objetos cayendo */}
       <RandomFallingObjects />
 
-      {/* Texto 3D flotante */}
-      <Text position={[0, 7, -10]} fontSize={2} color="red" anchorX="center" anchorY="middle">
+      {/* Texto 3D mejorado */}
+      <Text
+        position={[0, 7.5, -10]}
+        fontSize={3}
+        color="#1abc9c"
+        anchorX="center"
+        anchorY="middle"
+        bevelEnabled
+        bevelSize={0.1}
+        bevelOffset={0.05}
+      >
         CONTAMINACIÓN
       </Text>
 
-      <Html position={[-10, 6, -10]}>
-        <div style={{ textAlign: 'center', color: 'black', fontSize: '1.7rem' }}>CUIDEMOS EL MUNDO</div>
+      <Html position={[-10, 5, -10]}>
+        <div style={{ textAlign: 'center', color: '#ff6347', fontSize: '2rem' }}>
+          CUIDEMOS EL MUNDO
+        </div>
       </Html>
 
-      <Html position={[5, 6, -10]}>
-        <div style={{ textAlign: 'center', color: 'black', fontSize: '1.7rem' }}>PAREMOS DE CONTAMINAR</div>
+      <Html position={[5, 5, -10]}>
+        <div style={{ textAlign: 'center', color: '#32CD32', fontSize: '2rem' }}>
+          PAREMOS DE CONTAMINAR
+        </div>
       </Html>
 
       <OrbitControls enableDamping enableZoom={false} />
