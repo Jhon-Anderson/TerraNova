@@ -18,6 +18,16 @@ const Tree = ({ position }) => (
   </group>
 );
 
+const Clouds = () => {
+  const positions = [
+    [10, 10, -10],
+    [-10, 8, 5],
+    [-10, 8, -15],
+    [5, 9, 10],
+  ];
+  return positions.map((pos, index) => <Cloud key={index} position={pos} />);
+};
+
 const Ground = () => {
   const [ref] = usePlane(() => ({
     rotation: [-Math.PI / 2, 0, 0],
@@ -32,10 +42,7 @@ const Ground = () => {
 };
 
 const FallingObject = ({ position, args, color }) => {
-  const [ref] = useBox(() => ({
-    mass: 1,
-    position,
-  }));
+  const [ref] = useBox(() => ({ mass: 1, position }));
   return (
     <mesh ref={ref} castShadow>
       <boxGeometry args={args} />
@@ -44,140 +51,94 @@ const FallingObject = ({ position, args, color }) => {
   );
 };
 
-const RandomFallingObjects = () => {
-  const generateRandomPosition = () => [
-    (Math.random() - 0.5) * 20,
-    10 + Math.random() * 10,
-    (Math.random() - 0.5) * 20,
-  ];
+const RandomFallingObjects = () => (
+  <>
+    {Array.from({ length: 10 }).map((_, i) => (
+      <FallingObject
+        key={i}
+        position={[
+          (Math.random() - 0.5) * 20,
+          10 + Math.random() * 10,
+          (Math.random() - 0.5) * 20,
+        ]}
+        args={[1, 1, 1]}
+        color={`hsl(${Math.random() * 360}, 100%, 50%)`}
+      />
+    ))}
+  </>
+);
 
-  return (
-    <>
-      {Array.from({ length: 10 }).map((_, i) => (
-        <FallingObject
-          key={i}
-          position={generateRandomPosition()}
-          args={[1, 1, 1]}
-          color={`hsl(${Math.random() * 360}, 100%, 50%)`}
-        />
-      ))}
-    </>
-  );
+const generateTreePositions = () => {
+  const positions = [];
+  const rows = [-5, 5];
+  const cols = [-20, -10, 10, 20];
+  rows.forEach((z) => cols.forEach((x) => positions.push([x, 0, z])));
+  return positions;
 };
 
 const Scene = () => {
   const [flyPosition, setFlyPosition] = useState([0, -0.2, 0]);
-  const [moving, setMoving] = useState(false);
 
   const moveFly = (direction) => {
-    setMoving(true);
     setFlyPosition((prev) => {
-      const newPosition = [...prev];
-      if (direction === 'up') newPosition[2] -= 0.5;
-      if (direction === 'down') newPosition[2] += 0.5;
-      if (direction === 'left') newPosition[0] -= 0.5;
-      if (direction === 'right') newPosition[0] += 0.5;
-      newPosition[1] = -0.2;
-      return newPosition;
+      const newPos = [...prev];
+      if (direction === 'up') newPos[2] -= 0.5;
+      if (direction === 'down') newPos[2] += 0.5;
+      if (direction === 'left') newPos[0] -= 0.5;
+      if (direction === 'right') newPos[0] += 0.5;
+      newPos[1] = -0.2;
+      return newPos;
     });
   };
 
-  const stopMoving = () => setMoving(false);
-
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowUp' || e.key === 'w') moveFly('up');
-      if (e.key === 'ArrowDown' || e.key === 's') moveFly('down');
-      if (e.key === 'ArrowLeft' || e.key === 'a') moveFly('left');
-      if (e.key === 'ArrowRight' || e.key === 'd') moveFly('right');
+      const actions = {
+        ArrowUp: () => moveFly('up'),
+        w: () => moveFly('up'),
+        ArrowDown: () => moveFly('down'),
+        s: () => moveFly('down'),
+        ArrowLeft: () => moveFly('left'),
+        a: () => moveFly('left'),
+        ArrowRight: () => moveFly('right'),
+        d: () => moveFly('right'),
+      };
+      if (actions[e.key]) actions[e.key]();
     };
-
-    const handleKeyUp = () => stopMoving();
 
     window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
-    };
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   return (
     <>
+      {/* Iluminación */}
       <ambientLight intensity={0.5} />
-      <directionalLight
-        position={[10, 20, 10]}
-        intensity={3}
-        castShadow
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-        shadow-camera-far={50}
-        shadow-camera-left={-25}
-        shadow-camera-right={25}
-        shadow-camera-top={25}
-        shadow-camera-bottom={-25}
-      />
-      <pointLight position={[-10, 10, -10]} intensity={0.5} />
+      <directionalLight position={[10, 20, 10]} intensity={3} castShadow />
       <spotLight position={[0, 10, 0]} angle={0.15} intensity={0.8} castShadow />
 
-      <Sky
-        distance={450000}
-        inclination={0.5}
-        azimuth={0.25}
-        turbidity={10}
-        rayleigh={2}
-        mieCoefficient={0.005}
-        mieDirectionalG={0.8}
-        skyColor="#87CEEB"
-        sunColor="#87CEEB"
-      />
+      {/* Cielo y Estrellas */}
+      <Sky inclination={0.5} azimuth={0.25} turbidity={10} rayleigh={2} />
+      <Stars radius={100} depth={50} count={5000} factor={4} fade />
 
-      <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
-
-      <Cloud position={[10, 10, -10]} />
-      <Cloud position={[-10, 8, 5]} />
-      <Cloud position={[-10, 8, -15]} />
-      <Cloud position={[5, 9, 10]} />
-
-      <Chiamaia position={flyPosition} castShadow />
-      <Indicador position={[0, 0, -8]} castShadow />
-
-      <Tree position={[-20, 0, -5]} />
-      <Tree position={[-10, 0, -5]} />
-      <Tree position={[10, 0, -5]} />
-      <Tree position={[20, 0, -5]} />
-      <Tree position={[-20, 0, 5]} />
-      <Tree position={[-10, 0, 5]} />
-      <Tree position={[10, 0, 5]} />
-      <Tree position={[20, 0, 5]} />
-
+      {/* Modelos y Objetos */}
+      <Chiamaia position={flyPosition} />
+      <Indicador position={[0, 0, -8]} />
+      {generateTreePositions().map((pos, i) => (
+        <Tree key={i} position={pos} />
+      ))}
       <Ground />
       <RandomFallingObjects />
 
-      {/* Texto 3D mejorado */}
-      <Text
-        position={[0, 7.5, -10]}
-        fontSize={3}
-        color="#1abc9c"
-        anchorX="center"
-        anchorY="middle"
-        bevelEnabled
-        bevelSize={0.1}
-        bevelOffset={0.05}
-      >
+      {/* Texto y Mensajes */}
+      <Text position={[0, 7.5, -10]} fontSize={3} color="#1abc9c">
         CONTAMINACIÓN
       </Text>
-
       <Html position={[-10, 5, -10]}>
-        <div style={{ textAlign: 'center', color: '#ff6347', fontSize: '2rem' }}>
-          CUIDEMOS EL MUNDO
-        </div>
+        <div style={{ color: '#ff6347', fontSize: '2rem' }}>CUIDEMOS EL MUNDO</div>
       </Html>
-
       <Html position={[5, 5, -10]}>
-        <div style={{ textAlign: 'center', color: '#32CD32', fontSize: '2rem' }}>
-          PAREMOS DE CONTAMINAR
-        </div>
+        <div style={{ color: '#32CD32', fontSize: '2rem' }}>PAREMOS DE CONTAMINAR</div>
       </Html>
 
       <OrbitControls enableDamping enableZoom={false} />
@@ -189,6 +150,7 @@ const GameContaminacion = () => (
   <Canvas camera={{ position: [0, 5, 20], fov: 40 }} shadows>
     <Physics gravity={[0, -9.8, 0]}>
       <Scene />
+      <Clouds />
     </Physics>
   </Canvas>
 );
