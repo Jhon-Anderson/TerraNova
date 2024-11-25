@@ -6,6 +6,7 @@ const Chiamaia = ({ position }) => {
 
     return (
         <>
+        
             <primitive
                 object={scene}
                 scale={20}
