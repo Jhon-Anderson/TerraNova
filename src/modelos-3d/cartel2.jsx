@@ -14,15 +14,16 @@ const Cartel = () => {
 
     return (
         <>
-            <primitive 
-                object={scene} 
-                scale={55} 
-                position={[0, 1, -58]} 
-                rotation={[0, Math.PI / 6, 0]}
+            <primitive
+                object={scene}
+                scale={4}
+                position={[-5.3, 0.6, -1.7]}
+                rotation={[0, Math.PI / 1.6, 0]}
             />
             <Text
-                position={[-1, 15, -48]}
-                fontSize={1.6}
+                position={[-4.6, 1.6, -1.5]} // Ajusta para que esté frente al cartel
+                rotation={[0, Math.PI / 2.2, 0]} // Alinea con la rotación del cartel
+                fontSize={0.16}
                 color="white"
                 anchorX="center"
                 anchorY="middle"
@@ -31,8 +32,8 @@ const Cartel = () => {
                 textAlign="justify"
                 wrap={true}
             >
-               La&nbsp;escasez&nbsp;de&nbsp;agua&nbsp;es&nbsp;un&nbsp;problema&nbsp; global&nbsp;creciente&nbsp;impulsado&nbsp;por&nbsp;el&nbsp;cambio&nbsp; climático,&nbsp;la&nbsp;contaminación&nbsp;y&nbsp;la&nbsp;mala&nbsp; gestión&nbsp;de&nbsp;recursos.&nbsp; Afecta&nbsp;el&nbsp;acceso&nbsp;al&nbsp;agua&nbsp;potable,&nbsp;la&nbsp;agricultura&nbsp;y&nbsp;los&nbsp; ecosistemas,&nbsp;impactando&nbsp; gravemente&nbsp;a&nbsp;las&nbsp;comunidades&nbsp;más&nbsp;vulnerables
-                        </Text>
+                Muevete&nbsp;con&nbsp;el&nbsp;mouse&nbsp;y&nbsp;las&nbsp;teclas
+            </Text>
         </>
     );
 };

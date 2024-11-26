@@ -5,6 +5,7 @@ import SeaFloorModel from '../../../modelos-3d/SeaFloorModel';
 import CrabModel from '../../../modelos-3d/CrabModel';
 import SmokeEffect from '../../../modelos-3d/SmokeEffect';
 import Oceano from '../../../modelos-3d/Oceano';
+import Cartel from '../../../modelos-3d/cartel2';
 
 function Escenario3D() {
     // Inicializa el estado para la posición del humo
@@ -14,7 +15,7 @@ function Escenario3D() {
     const handleCrabCollide = (position) => {
         console.log('Colisión detectada en posición:', position); // Debug para verificar
         setSmokePosition(position); // Actualiza la posición del humo
-      };
+    };
     // Reinicia el estado después de 2 segundos para permitir que vuelva a ocurrir
     setTimeout(() => setSmokePosition(null), 2000);
     return (
@@ -27,17 +28,19 @@ function Escenario3D() {
 
             {/* Calamar con interacciones */}
             <SeaHorseModel position={[3, 0, 0]} scale={1} />
-            <Oceano/>
+            <Oceano />
 
             {/* Cangrejo con físicas y detección de colisión */}
             <CrabModel
                 position={[0, -2.6, 0]} // Ajusta la posición según tu escena
                 scale={0.4}
-                onCollide={() => handleCrabCollide([0, -2.6, 0])} 
+                onCollide={() => handleCrabCollide([0, -2.6, 0])}
             />
 
             {/* Humo verde al colisionar */}
             {smokePosition && <SmokeEffect position={smokePosition} />}
+            <Cartel/>
+
         </>
     );
 }

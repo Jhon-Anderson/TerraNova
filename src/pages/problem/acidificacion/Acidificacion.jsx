@@ -4,7 +4,7 @@ import Header from '../../../componentes/Header';
 import './Acidificacion.css';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
-import { OrbitControls, Sky, Stars } from '@react-three/drei';
+import { OrbitControls, Stars } from '@react-three/drei';
 import { Physics, RigidBody } from '@react-three/rapier';
 import Escenario3D from './Escenario3D';
 
@@ -56,30 +56,24 @@ function Acidificacion() {
                     <div className="modal-content">
                         <button className="close" onClick={cerrarModal}>&times;</button>
                         <Suspense fallback={<span>Cargando modelo...</span>}>
-                            <Canvas className="canvas" style={{ background: '#000022' }}>
-                                {/* Luz ambiental tenue */}
+                            <Canvas className="canvas">
+                                {/* Luces y ambiente */}
                                 <ambientLight intensity={0.1} color="#444" />
-
-                             {/* Luz direccional suave */}
                                 <directionalLight position={[5, 5, 10]} intensity={0.5} color="#888" />
 
                                 {/* Fondo oscuro con estrellas */}
                                 <fog attach="fog" args={['#000022', 10, 50]} />
                                 <Stars
-                                    radius={50}  // Reduce el radio de las estrellas
-                                    depth={10}   // Profundidad más limitada
-                                    count={1000} // Menos estrellas para un efecto más tenue
-                                    factor={2}   // Tamaño de las estrellas
-                                    saturation={0}
+                                    radius={50}
+                                    depth={10}
+                                    count={1000}
+                                    factor={2}
                                     fade
                                 />
 
-                                {/* Tu contenido 3D aquí */}
+                                {/* Contenido 3D */}
                                 <Physics>
-                                    {/* Cargar la escena 3D completa */}
                                     <Escenario3D />
-
-                                    {/* Gota de ácido */}
                                     <RigidBody name="acidSphere" restitution={0} position={[-2, 5, 0]} colliders="ball">
                                         <mesh>
                                             <sphereGeometry args={[0.3, 32, 32]} />
