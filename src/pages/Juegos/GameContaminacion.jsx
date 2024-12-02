@@ -115,10 +115,23 @@ const Scene = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
+
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
+  }, []);
+
+  // Reproducir audio después de 5 segundos al cargar el componente
+  useEffect(() => {
+    const soundEffect = new Audio('/sonidos/bienvenida_contaminacion.wav');
+    const timer = setTimeout(() => {
+      soundEffect.play().catch((error) => {
+        console.error("Error al reproducir el audio:", error);
+      });
+    }, 2000); // 5 segundos de retraso
+
+    return () => clearTimeout(timer); // Limpiar el temporizador en caso de desmontar el componente
   }, []);
 
   return (
