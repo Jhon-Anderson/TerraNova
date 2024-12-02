@@ -34,15 +34,15 @@ const Barco = ({ position, scale = 0.01, rotation = [Math.PI / -2, 0, -1.6] }) =
   }, [scene]);
 
   return obj ? (
-    <RigidBody colliders="hull" mass={1} position={position}>
-      <primitive
-        object={obj}
-        scale={scale}
-        rotation={rotation}
-        castShadow
-        receiveShadow
-      />
-    </RigidBody>
+    <RigidBody colliders="hull" mass={1} position={position} >
+  <primitive
+    object={obj}
+    scale={scale}
+    rotation={rotation}
+    castShadow
+    receiveShadow
+  />
+</RigidBody>
   ) : null;
 };
 
