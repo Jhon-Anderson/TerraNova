@@ -7,8 +7,13 @@ import './Escasez.css';
 const Escasez = () => {
     const navigate = useNavigate();
 
-    const handleClick = () => {
-        navigate('/Escena'); // Asegúrate de reemplazar '/ruta-a-escena' con la ruta real de `Escena`
+    // Manejadores de eventos para redirigir a diferentes rutas
+    const handleEscenaClick = () => {
+        navigate('/Escena'); // Redirige a la ruta para "¿Qué es la Escasez de Agua?"
+    };
+
+    const handleCausasClick = () => {
+        navigate('/Causas'); // Redirige a la ruta para "Causas de la Escasez de Agua"
     };
 
     return (
@@ -16,14 +21,22 @@ const Escasez = () => {
             <Header />
             <h1 className="title">Escasez de Agua</h1>
             <div className="info-boxes">
-                <div className="info-box" onClick={handleClick} style={{ cursor: 'pointer' }}>
+                <div
+                    className="info-box"
+                    onClick={handleEscenaClick}
+                    style={{ cursor: 'pointer' }}
+                >
                     <h2>¿Qué es la Escasez de Agua?</h2>
                     <p>
                         La escasez de agua se refiere a la falta de acceso suficiente al agua dulce
                         para satisfacer las necesidades humanas y ecológicas.
                     </p>
                 </div>
-                <div className="info-box">
+                <div
+                    className="info-box"
+                    onClick={handleCausasClick}
+                    style={{ cursor: 'pointer' }}
+                >
                     <h2>Causas de la Escasez de Agua</h2>
                     <p>
                         Las principales causas de la escasez de agua incluyen el crecimiento poblacional,

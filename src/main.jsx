@@ -6,8 +6,8 @@ import Escasez from './pages/problem/escasez/Escasez';
 import Acidificacion from './pages/problem/acidificacion/Acidificacion';
 import Autenticacion from './pages/autenticacion/Autenticacion';
 import Escena from './pages/problem/escasez/Escena';
-import GameContaminacion from './pages/Juegos/GameContaminacion';
 import Home from './pages/Home';
+import Causas from './pages/problem/escasez/Causas';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -19,7 +19,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/escasez" element={<Escasez />} />
         <Route path="/acidificacion" element={<Acidificacion />} />        
         <Route path="/escena" element={<Escena />} /> 
-        <Route path="/gamecontaminacion" element={<GameContaminacion />} />  
+        <Route path='/Causas' element={<Causas/>} />
       </Routes>
     </Router>
   </StrictMode>
