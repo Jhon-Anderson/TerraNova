@@ -168,6 +168,27 @@ const Scene = () => {
 
       <Chiamaia position={flyPosition} castShadow />
       <Indicador position={[0, 0, -8]} castShadow />
+
+      {/* Botón Home */}
+      <Html position={[-13, 7, 0]}>
+        <div style={{ position: 'absolute', top: '10px', left: '10px' }}>
+          <button
+            style={{
+              padding: '10px 20px',
+              backgroundColor: '#4CAF50',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              fontSize: '16px',
+            }}
+            onClick={() => window.location.href = 'Home'} // Redirige a la página principal
+          >
+            Home
+          </button>
+        </div>
+      </Html>
+
       {/* Texto superpuesto */}
       <Text
         position={[-0.05, 4.2, -7]} // Posición del texto
