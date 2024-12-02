@@ -65,8 +65,6 @@ const Header = () => {
                             )}
                         </li>
                         <li onClick={() => { navigate('/educacion'); closeMenu(); }}>Educación</li>
-                        <li onClick={() => { navigate('/imagenes'); closeMenu(); }}>Imágenes</li>
-                        <li onClick={() => { navigate('/videos'); closeMenu(); }}>Videos</li>
                         <li onClick={() => { navigate('/mas-soluciones'); closeMenu(); }}>Más Soluciones</li>
                     </ul>
                 </div>
