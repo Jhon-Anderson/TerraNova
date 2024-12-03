@@ -10,7 +10,7 @@ const Indicador = ({
     const scene = useLoader(OBJLoader, '/model-3d/indicador.obj');
     
     // Crear el objeto de audio una vez
-    const soundEffect = React.useRef(new Audio('/sonidos/texto_indicador.wav'));
+    const soundEffect = React.useRef(new Audio('/sonidos/texto_indicadorgi.wav'));
 
     // Configurar sombras para las mallas dentro del objeto
     scene.traverse((child) => {
