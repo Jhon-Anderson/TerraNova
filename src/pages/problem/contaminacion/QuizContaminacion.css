@@ -1,0 +1,31 @@
+.quiz-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.quiz-option {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.quiz-option:hover {
+  background-color: #45a049;
+}
+
+.quiz-restart {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.quiz-restart:hover {
+  background-color: #007B9E;
+}

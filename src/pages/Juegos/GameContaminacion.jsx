@@ -189,6 +189,26 @@ const Scene = () => {
         </div>
       </Html>
 
+      {/* Botón Quiz */}
+      <Html position={[12, 7, 0]}>
+        <div style={{ position: 'absolute', top: '10px', left: '10px' }}>
+          <button
+            style={{
+              padding: '10px 20px',
+              backgroundColor: '#FFA500',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              fontSize: '16px',
+            }}
+            onClick={() => window.location.href = 'QuizContaminacion'} // Redirige a la página de Quiz
+          >
+            Quiz
+          </button>
+        </div>
+      </Html>
+
       {/* Texto superpuesto */}
       <Text
         position={[-0.05, 4.2, -7]} // Posición del texto
