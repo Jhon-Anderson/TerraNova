@@ -128,9 +128,9 @@ const Scene = () => {
       soundEffect.play().catch((error) => {
         console.error("Error al reproducir el audio:", error);
       });
-    }, 2000);
+    }, 2000); // 5 segundos de retraso
 
-    return () => clearTimeout(timer); 
+    return () => clearTimeout(timer); // Limpiar el temporizador en caso de desmontar el componente
   }, []);
 
   return (
@@ -201,7 +201,7 @@ const Scene = () => {
               cursor: 'pointer',
               fontSize: '16px',
             }}
-            onClick={() => window.location.href = '/'}
+            onClick={() => window.location.href = 'QuizContaminacion'}
           >
             Quiz
           </button>
