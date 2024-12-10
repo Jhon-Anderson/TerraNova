@@ -122,16 +122,15 @@ const Scene = () => {
     };
   }, []);
 
-  // Reproducir audio después de 5 segundos al cargar el componente
   useEffect(() => {
     const soundEffect = new Audio('/sonidos/bienvenida_contaminacion.wav');
     const timer = setTimeout(() => {
       soundEffect.play().catch((error) => {
         console.error("Error al reproducir el audio:", error);
       });
-    }, 2000); // 5 segundos de retraso
+    }, 2000);
 
-    return () => clearTimeout(timer); // Limpiar el temporizador en caso de desmontar el componente
+    return () => clearTimeout(timer); 
   }, []);
 
   return (
@@ -182,7 +181,7 @@ const Scene = () => {
               cursor: 'pointer',
               fontSize: '16px',
             }}
-            onClick={() => window.location.href = 'Home'} // Redirige a la página principal
+            onClick={() => window.location.href = 'Home'}
           >
             Home
           </button>
@@ -211,7 +210,7 @@ const Scene = () => {
 
       {/* Texto superpuesto */}
       <Text
-        position={[-0.05, 4.2, -7]} // Posición del texto
+        position={[-0.05, 4.2, -7]} 
         fontSize={0.4}
         color="black"
         anchorX="center"

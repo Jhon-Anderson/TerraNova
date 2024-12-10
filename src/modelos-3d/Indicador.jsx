@@ -9,10 +9,8 @@ const Indicador = ({
 }) => {
     const scene = useLoader(OBJLoader, '/model-3d/indicador.obj');
     
-    // Crear el objeto de audio una vez
-    const soundEffect = React.useRef(new Audio('/sonidos/texto_indicadorgi.wav'));
+    const soundEffect = React.useRef(new Audio('/sonidos/texto_indicador.wav'));
 
-    // Configurar sombras para las mallas dentro del objeto
     scene.traverse((child) => {
         if (child.isMesh) {
             child.castShadow = true;     
@@ -23,7 +21,6 @@ const Indicador = ({
     const handleClick = () => {
         const audio = soundEffect.current;
 
-        // Verificar si el audio está en pausa antes de reproducirlo
         if (audio.paused) {
             audio.currentTime = 0; // Reiniciar el audio al principio
             audio.play().catch((error) => {
@@ -38,7 +35,7 @@ const Indicador = ({
             scale={scale}
             position={position}
             rotation={rotation}
-            onClick={handleClick} // Manejador del clic
+            onClick={handleClick}
         />
     );
 };
