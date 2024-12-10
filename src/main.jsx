@@ -8,7 +8,6 @@ import Autenticacion from './pages/autenticacion/Autenticacion';
 import Escena from './pages/problem/escasez/Escena';
 import GameContaminacion from './pages/Juegos/GameContaminacion';
 import Home from './pages/Home';
-import QuizContaminacion from './pages/problem/contaminacion/QuizContaminacion';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -21,7 +20,6 @@ createRoot(document.getElementById('root')).render(
         <Route path="/acidificacion" element={<Acidificacion />} />        
         <Route path="/escena" element={<Escena />} /> 
         <Route path="/gamecontaminacion" element={<GameContaminacion />} />  
-        <Route path="/quizcontaminacion" element={<QuizContaminacion />} />
       </Routes>
     </Router>
   </StrictMode>

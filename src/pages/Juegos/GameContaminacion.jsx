@@ -202,7 +202,7 @@ const Scene = () => {
               cursor: 'pointer',
               fontSize: '16px',
             }}
-            onClick={() => window.location.href = 'QuizContaminacion'} // Redirige a la página de Quiz
+            onClick={() => window.location.href = '/'}
           >
             Quiz
           </button>
