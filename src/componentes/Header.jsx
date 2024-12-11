@@ -33,7 +33,7 @@ const Header = () => {
             <button className="menu-toggle" onClick={toggleMenu}>
                 &#9776;
             </button>
-            
+
             <nav className="navbar">
                 <ul className="nav-links">
                     <li><button onClick={() => navigate('/contaminacion')} className="nav-button">Contaminación</button></li>
@@ -42,7 +42,7 @@ const Header = () => {
                 </ul>
             </nav>
 
-            <button onClick={() => navigate('/')} className="logout-button">Cerrar Sesión</button>            
+            <button onClick={() => navigate('/')} className="logout-button">Cerrar Sesión</button>
 
             {/* Menú lateral */}
             {menuOpen && (
@@ -64,9 +64,6 @@ const Header = () => {
                                 </ul>
                             )}
                         </li>
-                        <li onClick={() => { navigate('/educacion'); closeMenu(); }}>Educación</li>
-                        <li onClick={() => { navigate('/imagenes'); closeMenu(); }}>Imágenes</li>
-                        <li onClick={() => { navigate('/videos'); closeMenu(); }}>Videos</li>
                         <li onClick={() => { navigate('/mas-soluciones'); closeMenu(); }}>Más Soluciones</li>
                     </ul>
                 </div>

@@ -115,10 +115,22 @@ const Scene = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
+
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
+  }, []);
+
+  useEffect(() => {
+    const soundEffect = new Audio('/sonidos/bienvenida_contaminacion.wav');
+    const timer = setTimeout(() => {
+      soundEffect.play().catch((error) => {
+        console.error("Error al reproducir el audio:", error);
+      });
+    }, 2000);
+
+    return () => clearTimeout(timer); 
   }, []);
 
   return (
@@ -153,8 +165,63 @@ const Scene = () => {
 
       <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
 
-      <Chiamaia position={flyPosition} castShadow />    
-      <Indicador position={[0, 0, -8]} castShadow />      
+      <Chiamaia position={flyPosition} castShadow />
+      <Indicador position={[0, 0, -8]} castShadow />
+
+      {/* Botón Home */}
+      <Html position={[-13, 7, 0]}>
+        <div style={{ position: 'absolute', top: '10px', left: '10px' }}>
+          <button
+            style={{
+              padding: '10px 20px',
+              backgroundColor: '#4CAF50',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              fontSize: '16px',
+            }}
+            onClick={() => window.location.href = 'Home'}
+          >
+            Home
+          </button>
+        </div>
+      </Html>
+
+      {/* Botón Quiz */}
+      <Html position={[12, 7, 0]}>
+        <div style={{ position: 'absolute', top: '10px', left: '10px' }}>
+          <button
+            style={{
+              padding: '10px 20px',
+              backgroundColor: '#FFA500',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              fontSize: '16px',
+            }}
+            onClick={() => window.location.href = '/'}
+          >
+            Quiz
+          </button>
+        </div>
+      </Html>
+
+      {/* Texto superpuesto */}
+      <Text
+        position={[-0.05, 4.2, -7]} 
+        fontSize={0.4}
+        color="black"
+        anchorX="center"
+        anchorY="middle"
+        maxWidth={6}
+        lineHeight={1.1}
+        textAlign="justify"
+        wrap={true}
+      >
+        La contaminación pone en riesgo el ambiente y la salud, necesitando acciones sostenibles.La contaminación amenaza el medio ambiente y la salud, y es crucial adoptar prácticas más sostenibles.
+      </Text>
 
       <Tree position={[-20, 0, -5]} />
       <Tree position={[-10, 0, -5]} />
