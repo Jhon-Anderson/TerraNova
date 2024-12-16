@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './QuizContaminacion.css';
 
@@ -7,6 +7,12 @@ const QuizContaminacion = () => {
   const navigate = useNavigate();
   const [contaminacionScore, setContaminacionScore] = useState(0);
   const [medioAmbienteScore, setMedioAmbienteScore] = useState(0);
+  const [audio, setAudio] = useState(new Audio('/public/sonidos/quiz_sonido.mp3'));
+
+  useEffect(() => {
+    // Reproducir sonido al iniciar el componente
+    audio.play();
+  }, [audio]);
 
   const handleBack = () => {
     navigate(-1);
@@ -34,6 +40,16 @@ const QuizContaminacion = () => {
 
   const handleDrag = (event) => {
     event.dataTransfer.setData('text', event.target.id);
+  };
+
+  const playInstructionSound = () => {
+    if (!audio.paused) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+    const newAudio = new Audio('/public/sonidos/texto_quiz.wav');
+    setAudio(newAudio);
+    newAudio.play();
   };
 
   return (
@@ -94,6 +110,11 @@ const QuizContaminacion = () => {
           <div className="label">Medio Ambiente</div>
         </div>
       </div>
+
+      {/* Botón ¿Cómo Jugar? */}
+      <button className="how-to-play-button" onClick={playInstructionSound}>
+        ¿Cómo Jugar?
+      </button>
     </div>
   );
 };

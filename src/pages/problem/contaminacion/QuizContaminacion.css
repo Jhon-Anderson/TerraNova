@@ -98,3 +98,22 @@
   line-height: 50px;
   cursor: grab;
 }
+
+.how-to-play-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.how-to-play-button:hover {
+  background-color: #218838;
+}
