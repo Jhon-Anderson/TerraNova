@@ -7,10 +7,21 @@ const QuizContaminacion = () => {
   const navigate = useNavigate();
   const [contaminacionScore, setContaminacionScore] = useState(0);
   const [medioAmbienteScore, setMedioAmbienteScore] = useState(0);
+  const [stickers, setStickers] = useState([]);
   const [audio, setAudio] = useState(new Audio('/public/sonidos/quiz_sonido.mp3'));
 
   useEffect(() => {
     audio.play();
+    // Generar un arreglo aleatorio de stickers para la cuadrícula
+    const generateStickers = () => {
+      const allStickers = [
+        '🚗','🏍️','🛢️', '🚚', '🚜', '🏙️', '💨', '🗑️', // Contaminación
+        '🌱', '🐦', '🌊', '🌍', '🌼', '🌳', '🦢', '🦋', '🐨', '🐢', // Medio Ambiente
+      ];
+      let shuffled = allStickers.sort(() => 0.5 - Math.random());
+      return shuffled;
+    };
+    setStickers(generateStickers());
   }, [audio]);
 
   const handleBack = () => {
@@ -52,10 +63,6 @@ const QuizContaminacion = () => {
   };
 
   const getStickerForCell = (fila, columna) => {
-    const stickers = [
-      '🚗','🏍️','🛢️', '🚚', '🚜', '🏙️', '💨', '🗑️', // Contaminación
-      '🌱', '🐦', '🌊', '🌍', '🌼', '🌳', '🦢', '🦋', '🐨', '🐢', // Medio Ambiente
-    ];
     return stickers[(fila * filas.length + columna) % stickers.length];
   };
 
