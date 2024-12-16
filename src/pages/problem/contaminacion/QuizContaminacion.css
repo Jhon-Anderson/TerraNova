@@ -1,10 +1,31 @@
-/* QuizContaminacion.css */
-
 .quiz-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.content {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  flex-grow: 1;
   gap: 20px;
 }
 
@@ -15,7 +36,7 @@
 .label {
   margin-bottom: 10px;
   border: 1px solid black;
-  padding: 10px; /* Hacer más grande los cuadros */
+  padding: 10px;
 }
 
 .tabla {
@@ -23,7 +44,7 @@
 }
 
 .cuadro {
-  width: 70px; /* Hacer más grande los cuadros */
-  height: 70px; /* Hacer más grande los cuadros */
+  width: 70px;
+  height: 70px;
   border: 1px solid black;
 }
