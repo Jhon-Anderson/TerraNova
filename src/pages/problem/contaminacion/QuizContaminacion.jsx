@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './QuizContaminacion.css';
 
 const QuizContaminacion = () => {
-  const filas = Array.from({ length: 5 }, (_, i) => i); 
+  const filas = Array.from({ length: 5 }, (_, i) => i);
   const navigate = useNavigate();
   const [contaminacionScore, setContaminacionScore] = useState(0);
   const [medioAmbienteScore, setMedioAmbienteScore] = useState(0);
@@ -24,27 +24,38 @@ const QuizContaminacion = () => {
     }
 
     if (draggedElement) {
-      draggedElement.style.visibility = 'hidden'; 
+      draggedElement.style.visibility = 'hidden';
     }
   };
 
   const allowDrop = (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
   };
 
   const handleDrag = (event) => {
-    event.dataTransfer.setData('text', event.target.id); 
+    event.dataTransfer.setData('text', event.target.id);
   };
 
   return (
     <div className="quiz-container">
+      {/* Video de fondo */}
+      <video autoPlay loop muted className="background-video">
+        <source src="/videos/quiz_background.mp4" type="video/mp4" />
+        Tu navegador no soporta la reproducción de video.
+      </video>
+
+      {/* Botón de regreso */}
       <button className="back-button" onClick={handleBack}>
         Back
       </button>
+
+      {/* Puntuaciones */}
       <div className="scores">
         <div>Contaminación: {contaminacionScore}</div>
         <div>Medio Ambiente: {medioAmbienteScore}</div>
       </div>
+
+      {/* Contenido principal */}
       <div className="content">
         <div
           className="label-container drop-zone"
@@ -53,6 +64,7 @@ const QuizContaminacion = () => {
         >
           <div className="label">Contaminación</div>
         </div>
+
         <table className="tabla">
           <tbody>
             {filas.map((fila) => (
@@ -73,6 +85,7 @@ const QuizContaminacion = () => {
             ))}
           </tbody>
         </table>
+
         <div
           className="label-container drop-zone"
           onDrop={(event) => handleDrop(event, 'medioAmbiente')}
