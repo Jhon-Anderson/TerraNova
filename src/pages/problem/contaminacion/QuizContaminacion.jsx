@@ -7,16 +7,16 @@ const QuizContaminacion = () => {
   const navigate = useNavigate();
   const [contaminacionScore, setContaminacionScore] = useState(0);
   const [medioAmbienteScore, setMedioAmbienteScore] = useState(0);
+  const [points, setPoints] = useState(0); // Nueva variable para los puntos
   const [stickers, setStickers] = useState([]);
   const [audio, setAudio] = useState(new Audio('/public/sonidos/quiz_sonido.mp3'));
 
   useEffect(() => {
     audio.play();
-    // Generar un arreglo aleatorio de stickers para la cuadrícula
     const generateStickers = () => {
       const allStickers = [
-        '🚗','🏍️','🛢️', '🚚', '🚜', '🏙️', '💨', '🗑️', // Contaminación
-        '🌱', '🐦', '🌊', '🌍', '🌼', '🌳', '🦢', '🦋', '🐨', '🐢', // Medio Ambiente
+        '🚗','🏍️','🛢️', '🚚', '🚜', '🏙️', '💨', '🗑️', 
+        '🌱', '🐦', '🌊', '🌍', '🌼', '🌳', '🦢', '🦋', '🐨', '🐢',
       ];
       let shuffled = allStickers.sort(() => 0.5 - Math.random());
       return shuffled;
@@ -36,9 +36,11 @@ const QuizContaminacion = () => {
     if (draggedElement) {
       if (target === 'contaminacion' && draggedElement.classList.contains('contaminacion')) {
         setContaminacionScore((prev) => prev + 1);
+        setPoints((prev) => prev + 2); 
         draggedElement.style.visibility = 'hidden';
       } else if (target === 'medioAmbiente' && draggedElement.classList.contains('medioAmbiente')) {
         setMedioAmbienteScore((prev) => prev + 1);
+        setPoints((prev) => prev + 2); 
         draggedElement.style.visibility = 'hidden';
       }
     }
@@ -80,6 +82,7 @@ const QuizContaminacion = () => {
       <div className="scores">
         <div>Contaminación: {contaminacionScore}</div>
         <div>Medio Ambiente: {medioAmbienteScore}</div>
+        <div>Puntos Totales: {points}</div> 
       </div>
 
       <div className="content">
@@ -97,7 +100,7 @@ const QuizContaminacion = () => {
               <tr key={fila}>
                 {filas.map((columna) => {
                   const sticker = getStickerForCell(fila, columna);
-                  const isContaminacion = sticker === '🚗' || sticker === '🏍️' || sticker === '🛢️' || sticker === '🚚' || sticker === '🚜' || sticker === '🏙️' || sticker === '💨' || sticker === '🗑️';
+                  const isContaminacion = ['🚗', '🏍️', '🛢️', '🚚', '🚜', '🏙️', '💨', '🗑️'].includes(sticker);
                   const stickerClass = isContaminacion ? 'contaminacion' : 'medioAmbiente';
                   return (
                     <td key={columna} className="cuadro">

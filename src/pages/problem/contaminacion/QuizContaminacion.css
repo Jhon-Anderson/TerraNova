@@ -4,7 +4,7 @@
   height: 100%;
   width: 100%;
   position: relative;
-  overflow: hidden; /* Oculta contenido fuera de los límites del contenedor */
+  overflow: hidden; 
 }
 
 .background-video {
@@ -13,8 +13,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Asegura que el video cubra todo el fondo */
-  z-index: -1; /* Para que el video esté en el fondo */
+  object-fit: cover; 
+  z-index: -1;
 }
 
 .back-button {
