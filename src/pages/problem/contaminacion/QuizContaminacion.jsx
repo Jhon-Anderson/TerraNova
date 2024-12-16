@@ -10,7 +10,6 @@ const QuizContaminacion = () => {
   const [audio, setAudio] = useState(new Audio('/public/sonidos/quiz_sonido.mp3'));
 
   useEffect(() => {
-    // Reproducir sonido al iniciar el componente
     audio.play();
   }, [audio]);
 
@@ -23,14 +22,14 @@ const QuizContaminacion = () => {
     const data = event.dataTransfer.getData('text');
     const draggedElement = document.getElementById(data);
 
-    if (target === 'contaminacion') {
-      setContaminacionScore((prev) => prev + 1);
-    } else if (target === 'medioAmbiente') {
-      setMedioAmbienteScore((prev) => prev + 1);
-    }
-
     if (draggedElement) {
-      draggedElement.style.visibility = 'hidden';
+      if (target === 'contaminacion' && draggedElement.classList.contains('contaminacion')) {
+        setContaminacionScore((prev) => prev + 1);
+        draggedElement.style.visibility = 'hidden';
+      } else if (target === 'medioAmbiente' && draggedElement.classList.contains('medioAmbiente')) {
+        setMedioAmbienteScore((prev) => prev + 1);
+        draggedElement.style.visibility = 'hidden';
+      }
     }
   };
 
@@ -52,26 +51,30 @@ const QuizContaminacion = () => {
     newAudio.play();
   };
 
+  const getStickerForCell = (fila, columna) => {
+    const stickers = [
+      '🚗','🏍️','🛢️', '🚚', '🚜', '🏙️', '💨', '🗑️', // Contaminación
+      '🌱', '🐦', '🌊', '🌍', '🌼', '🌳', '🦢', '🦋', '🐨', '🐢', // Medio Ambiente
+    ];
+    return stickers[(fila * filas.length + columna) % stickers.length];
+  };
+
   return (
     <div className="quiz-container">
-      {/* Video de fondo */}
       <video autoPlay loop muted className="background-video">
         <source src="/videos/quiz_background.mp4" type="video/mp4" />
         Tu navegador no soporta la reproducción de video.
       </video>
 
-      {/* Botón de regreso */}
       <button className="back-button" onClick={handleBack}>
         Back
       </button>
 
-      {/* Puntuaciones */}
       <div className="scores">
         <div>Contaminación: {contaminacionScore}</div>
         <div>Medio Ambiente: {medioAmbienteScore}</div>
       </div>
 
-      {/* Contenido principal */}
       <div className="content">
         <div
           className="label-container drop-zone"
@@ -85,18 +88,23 @@ const QuizContaminacion = () => {
           <tbody>
             {filas.map((fila) => (
               <tr key={fila}>
-                {filas.map((columna) => (
-                  <td key={columna} className="cuadro">
-                    <div
-                      id={`figura-${fila}-${columna}`}
-                      className="figura"
-                      draggable="true"
-                      onDragStart={handleDrag}
-                    >
-                      🌍
-                    </div>
-                  </td>
-                ))}
+                {filas.map((columna) => {
+                  const sticker = getStickerForCell(fila, columna);
+                  const isContaminacion = sticker === '🚗' || sticker === '🏍️' || sticker === '🛢️' || sticker === '🚚' || sticker === '🚜' || sticker === '🏙️' || sticker === '💨' || sticker === '🗑️';
+                  const stickerClass = isContaminacion ? 'contaminacion' : 'medioAmbiente';
+                  return (
+                    <td key={columna} className="cuadro">
+                      <div
+                        id={`figura-${fila}-${columna}`}
+                        className={`figura ${stickerClass}`}
+                        draggable="true"
+                        onDragStart={handleDrag}
+                      >
+                        {sticker}
+                      </div>
+                    </td>
+                  );
+                })}
               </tr>
             ))}
           </tbody>
@@ -111,7 +119,6 @@ const QuizContaminacion = () => {
         </div>
       </div>
 
-      {/* Botón ¿Cómo Jugar? */}
       <button className="how-to-play-button" onClick={playInstructionSound}>
         ¿Cómo Jugar?
       </button>
