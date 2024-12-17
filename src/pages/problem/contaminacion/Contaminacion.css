@@ -114,3 +114,31 @@
     border: none;
     border-radius: 4px;
 }
+
+.info-boxes {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.info-box {
+    width: 30%;
+    background-color: #f0f8ff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.info-box:hover {
+    transform: scale(1.05);
+}
+
+.info-image {
+    margin-top: 10px;
+    width: 100%; /* Ajusta la imagen al ancho del contenedor */
+    height: auto;
+    border-radius: 5px;
+}
