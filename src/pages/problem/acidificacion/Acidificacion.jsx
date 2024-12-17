@@ -6,6 +6,7 @@ import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import { OrbitControls, Stars } from '@react-three/drei';
 import { Physics, RigidBody } from '@react-three/rapier';
+import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing';
 import Escenario3D from './Escenario3D';
 
 function Acidificacion() {
@@ -57,30 +58,33 @@ function Acidificacion() {
                         <button className="close" onClick={cerrarModal}>&times;</button>
                         <Suspense fallback={<span>Cargando modelo...</span>}>
                             <Canvas className="canvas">
-                                {/* Luces y ambiente */}
                                 <ambientLight intensity={0.1} color="#444" />
                                 <directionalLight position={[5, 5, 10]} intensity={0.5} color="#888" />
-
-                                {/* Fondo oscuro con estrellas */}
                                 <fog attach="fog" args={['#000022', 10, 50]} />
-                                <Stars
-                                    radius={50}
-                                    depth={10}
-                                    count={1000}
-                                    factor={2}
-                                    fade
-                                />
+                                <Stars radius={50} depth={10} count={1000} factor={2} fade />
 
-                                {/* Contenido 3D */}
                                 <Physics>
                                     <Escenario3D />
-                                    <RigidBody name="acidSphere" restitution={0} position={[-2, 5, 0]} colliders="ball">
+                                    <RigidBody 
+                                        name="acidSphere" 
+                                        restitution={0.5} 
+                                        position={[-1, 5, 0]} 
+                                        colliders="ball"
+                                        onCollisionEnter={(other) => {
+                                            console.log('¡Colisión detectada con:', other);
+                                        }}
+                                    >
                                         <mesh>
                                             <sphereGeometry args={[0.3, 32, 32]} />
                                             <meshStandardMaterial color="green" />
                                         </mesh>
                                     </RigidBody>
                                 </Physics>
+
+                                <EffectComposer>
+                                    <Bloom intensity={0.1} luminanceThreshold={0.5} luminanceSmoothing={0.1} />
+                                    <ChromaticAberration offset={[0.0001, 0.001]} />
+                                </EffectComposer>
 
                                 <OrbitControls />
                             </Canvas>

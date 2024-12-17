@@ -20,7 +20,6 @@ const Oceano = ({ color = "#1e90ff", opacity = 0.8 }) => {
   });
 
   return (
-    <RigidBody type="fixed" colliders="trimesh">
       <Plane args={[100, 100, 50, 50]} rotation={[-Math.PI / 2, 0, 0]} ref={meshRef}>
         <meshPhongMaterial
           attach="material"
@@ -30,7 +29,7 @@ const Oceano = ({ color = "#1e90ff", opacity = 0.8 }) => {
           transparent={true}
         />
       </Plane>
-    </RigidBody>
+
   );
 };
 
